@@ -1,5 +1,5 @@
 - pathPrefix:
-    - /dev-docs-template/
+    - /firefly-services/docs/illustrator/
 
 - pages:
     - [Analytics](index.md)
