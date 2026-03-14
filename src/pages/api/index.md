@@ -8,4 +8,4 @@ keywords:
   - data merge
   - status
 --- 
-<RedoclyAPIBlock src="/illustrator-api/illustrator-api.json" hideTryItPanel scrollYOffset={64} generateCodeSamples="languages: [{lang: 'curl'}]" />
+<RedoclyAPIBlock src="/firefly-services/docs/illustrator/illustrator-api.json" hideTryItPanel scrollYOffset={64} generateCodeSamples="languages: [{lang: 'curl'}]" />
