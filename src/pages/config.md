@@ -3,7 +3,7 @@
 
 - pages:
     - [All Firefly Services](https://developer.adobe.com/firefly-services/docs/guides/?aio_internal)
-    - [About Illustrator API (beta)](/index.md)
+    - [About Illustrator API](/index.md)
     - [Getting Started](/getting-started/index.md)
     - [API Reference](/api/index.md)
 
