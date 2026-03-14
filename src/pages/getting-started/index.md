@@ -65,7 +65,3 @@ A temporary access token validates calls to the API. You can [generate an access
   ```bash
   export ILLUSTRATOR_API_ACCESS_TOKEN=<Your_Access_Token>
   ```
-
-## Make your first API call
-
-\{If applicable, include a verification call to the specific API.\}
