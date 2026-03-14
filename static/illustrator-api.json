@@ -3,7 +3,7 @@
   "info": {
       "title": "Illustrator API - Firefly Services",
       "description": "Illustrator API allows you to perform various operations with an Adobe Illustrator template. The API processes requests asynchronously.",
-      "version": "beta",
+      "version": "1.0.0",
       "license": {
         "name": "Adobe Creative API License",
         "url": "https://www.adobe.com/content/dam/cc/en/legal/terms/enterprise/pdfs/PSLT-AdobeCreativeAPI-WW-2024v2.pdf"
@@ -11,7 +11,7 @@
   },
   "servers": [
       {
-          "url": "https://illustrator-api-beta.adobe.io",
+          "url": "https://illustrator-api.adobe.io",
           "description": "Production endpoint."
       }
   ],

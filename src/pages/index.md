@@ -1,6 +1,6 @@
 ---
-title: Overview - Firefly Services Illustrator API (beta)
-description: This is the overview page of Firefly Illustrator API (beta).
+title: Overview - Firefly Services Illustrator API
+description: This is the overview page of Firefly Illustrator API.
 keywords:
   - firefly
   - illustrator
@@ -14,7 +14,7 @@ keywords:
 
 ![A firefly with its path traced by a marker pen](./illustrator-hero.png)
 
-# Illustrator API (beta)
+# Illustrator API
 
 Programmatically scale your artwork to use anywhere your audience is, from business cards to billboards or digital ads.
 
