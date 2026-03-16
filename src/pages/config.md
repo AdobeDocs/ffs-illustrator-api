@@ -2,22 +2,25 @@
     - /firefly-services/docs/illustrator/
 
 - pages:
-    - [Analytics](index.md)
-    - [Guides](guides/index.md)
-    - API Reference
-        - [Reference v2.0](api/index.md)
-        - [Reference v1.4](api/1-4.md)
-    - [Support](support/index.md)
+    - All Firefly Services
+        - [Firefly Services Home](https://developer.adobe.com/firefly-services/docs/guides/?aio_internal) Introduction and general information about all Firefly services.
+        - [Firefly API](https://developer.adobe.com/firefly-services/docs/firefly-api/?aio_internal) Docs and references for Firefly API.
+        - [Photoshop API](https://developer.adobe.com/firefly-services/docs/photoshop/?aio_internal) Docs and references for Photoshop API.
+        - [Lightroom API](https://developer.adobe.com/firefly-services/docs/lightroom/?aio_internal) Docs and references for Lightroom API.
+        - [Audio/Video API](https://developer.adobe.com/audio-video-firefly-services/?aio_internal) Docs and references for Audio/Video API.
+        - [InDesign API](https://developer.adobe.com/firefly-services/docs/indesign-apis/?aio_internal) Docs and references for InDesign API.
+        - [Substance 3D API](https://developer.adobe.com/firefly-services/docs/s3dapi/?aio_internal) Unlock generative AI for rendering and object composites.
+        - [Illustrator API](https://developer.adobe.com/firefly-services/docs/illustrator/?aio_internal) Docs and references for Illustrator API.
+        - [Content Tagging API](https://experienceleague.adobe.com/docs/experience-platform/intelligent-services/content-commerce-ai/overview.html) Docs and references for Content Tagging services.
+    - [About Illustrator API](/index.md)
+    - [Getting Started](/getting-started/index.md)
+    - [API Reference](/api/index.md)
+
+- buttons:
+    - [Support](https://airtable.com/appu5RTWgdM95jynx/pagyuT1qspNJcPU2E/form)
+    - [Console](https://developer.adobe.com/console/) consoleId
 
 - subPages:
-    - [Get Started](guides/index.md) 
-        - [Dummy an OAuth Client](guides/dummy_oauth_client/index.md) 
-        - [Dummy OAuth using POSTMAN](guides/dummy_using_postman/index.md) 
-    - [Metrics API](guides/dummy_metrics_api/index.md) 
-    - [Migrating](guides/migrating/index.md) 
-    - [Overview](support/index.md) 
-        - [Help](support/index.md) 
-        - [FAQ](support/FAQ/index.md) 
-        - [How to contribute](support/contribute/index.md) 
-    - [Community](support/community/index.md) 
-        - [Information](support/community/index.md) 
+    - Getting Started header
+    - [Authentication](/getting-started/index.md)
+    - [Technical Usage Notes](/getting-started/usage/index.md)

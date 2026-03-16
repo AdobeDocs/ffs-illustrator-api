@@ -1,96 +1,60 @@
 ---
-title: Overview - Analytics
-description: This is the overview page of Analytics
-contributors:
-  - https://github.com/icaraps 
+title: Overview - Firefly Services Illustrator API
+description: This is the overview page of Firefly Illustrator API.
+keywords:
+  - firefly
+  - illustrator
+  - api
+  - reference
+  - documentation
+  - openapi
 ---
 
-<HeroSimple slots="heading, text"/>
+<SuperHero slots="image, heading, text" background="rgba(255, 174, 0, 0.81)" />
 
-# Analytics API
+![A firefly with its path traced by a marker pen](./illustrator-hero.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. 
+# Illustrator API
+
+Programmatically scale your artwork to use anywhere your audience is, from business cards to billboards or digital ads.
+
+## Overview
+
+Adobe Illustrator, the industry-standard vector graphics app that lets you create logos, icons, drawings, typography, and complex illustrations for any medium.
+
+With Firefly's Illustrator API, automate Adobe Illustrator's functionality for use cases like rendition, preview, data merge, custom script, image trace, Recolor, Manifest, and Document operations, and everything in between.
+
+### What's the Illustrator Data Merge service?
+
+Data merge uses Adobe Illustrator to create variations of a document by substituting placeholder variables with data from external sources.
+You could change the names of participants on event badges, or vary images across web banners and postcards, all without having to redo your dazzling, original artwork.
+
+Merge an Illustrator document with a data source file. Create one design, and then quickly produce variations by importing the names or the images from a data source file.
+
+### What's the Illustrator Rendition service?
+
+The Rendition service allows you to convert Adobe Illustrator files into various output formats. It supports conversion of .ai documents into multiple web- and print-ready formats. The output is provided as a single converted file.
+
+## Discover
+
+<DiscoverBlock slots="heading, link, text"/>
+
+### Get started
+
+[**Getting Started**](getting-started/index.md)
+
+Get started with authentication and other prerequisites.
+
+<DiscoverBlock slots="link, text"/>
+
+[**Try the API**](api/index.md)
+
+Try the API with Swagger UI. Explore, make calls, with full endpoint descriptions.
 
 <Resources slots="heading, links"/>
 
 #### Resources
 
-* [Quickstart Guide](https://developer.adobe.com)
-* [Analytics Github Repo](https://github.com/AdobeDocs/dev-site)
-
-## Overview
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-## Discover
-
-<DiscoverBlock width="100%" slots="heading, link, text"/>
-
-### Get Started
-
-[Quickstart Guide](guides/index.md)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-
-<DiscoverBlock slots="heading, link, text"/>
-
-### Guides
-
-[Calculated Metrics API](guides/dummy_metrics_api/index.md)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-
-<DiscoverBlock slots="link, text"/>
-
-[Segments API](guides/dummy_oauth_client/index.md)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-<DiscoverBlock slots="link, text"/>
-
-[Reporting Guide API](guides/dummy_using_postman/index.md)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-<DiscoverBlock slots="link, text"/>
-
-[Migrating from 1.4 to 2.0](guides/migrating/index.md)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-<DiscoverBlock width="100%" slots="heading, link, text"/>
-
-### API References
-
-[Try the API](api/index.md)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-## Contributing
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
-
-
-## API Requests & Rate Limits
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.
-
-Donec tincidunt turpis in congue vulputate. Suspendisse potenti. Phasellus feugiat eros sem, tristique sollicitudin lacus consectetur id. Cras tortor orci, venenatis ac vulputate sit amet, auctor sed ex. Ut vel convallis felis. Etiam luctus, diam sed venenatis tincidunt, ipsum turpis volutpat eros, nec interdum arcu mi molestie dolor. Donec id mauris sed odio mollis viverra sed lobortis quam. Aliquam mi metus, ultricies sagittis hendrerit eget, volutpat vel dui. Proin id urna hendrerit, scelerisque arcu sit amet, egestas neque. Sed fringilla odio tincidunt sapien malesuada facilisis.
+* [What is Adobe Illustrator?](https://www.adobe.com/learn/illustrator/web/what-is-illustrator?learnIn=1&locale=en)
+* [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
+* [Prepare a data source file](https://helpx.adobe.com/uk/illustrator/using/data-driven-graphics-templates-variables.html#prepare-data-source-file)
