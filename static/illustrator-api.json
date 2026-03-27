@@ -17,8 +17,7 @@
   ],
   "security": [
       {
-          "apiKey": [],
-          "Authorization": []
+          "apiKey": []
       }
   ],
   "tags": [],
@@ -1157,12 +1156,8 @@
           "apiKey": {
               "type": "apiKey",
               "name": "X-API-KEY",
-              "in": "header"
-          },
-          "Authorization": {
-              "type": "http",
-              "scheme": "bearer",
-              "bearerFormat": "JWT"
+              "in": "header",
+              "description": "The S2S API key for authentication."
           }
       },
       "schemas": {
