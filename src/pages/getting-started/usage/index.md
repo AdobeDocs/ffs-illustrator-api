@@ -31,7 +31,7 @@ When a match to the exact name is found, the variable-to-object mapping is creat
 
 ## Illustrator API supported fonts
 
-These are the currently supported Postscript fonts for Illustrator API's. Additionally the user can use any fonts they are authorized to access via [Adobe Fonts](https://fonts.adobe.com/fonts).
+These are the currently supported Postscript fonts for Illustrator API's.
 
 | Font Name                      |
 |--------------------------------|
