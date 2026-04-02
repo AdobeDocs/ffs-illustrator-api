@@ -819,7 +819,7 @@
             "get": {
                 "operationId": "facadeJobStatus",
                 "summary": "Retrieve job status",
-                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). Create Rendition and other job types do not use `partially_succeeded`. When `status` is `succeeded`, for Data Merge jobs each item in `outputs` includes a `row` field; For Create Rendition jobs, output items contain `destination` and `mediaType` only.",
+                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). No other job types return the `partially_succeeded` status. When `status` is `succeeded`, for Data Merge jobs each item in `outputs` includes a `row` field; For Create Rendition jobs, output items contain `destination` and `mediaType` only.",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "FacadeAsyncJob",
                 "parameters": [
