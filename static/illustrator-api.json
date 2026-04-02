@@ -819,7 +819,7 @@
             "get": {
                 "operationId": "facadeJobStatus",
                 "summary": "Retrieve job status",
-                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). Create Rendition and other job types do not use `partially_succeeded`.",
+                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). Create Rendition and other job types do not use `partially_succeeded`. When `status` is `succeeded`, for Data Merge jobs each item in `outputs` includes a `row` field; For Create Rendition jobs, output items contain `destination` and `mediaType` only.",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "FacadeAsyncJob",
                 "parameters": [
@@ -913,6 +913,9 @@
                                             "$ref": "#/components/schemas/DataMergeJobApiResponse"
                                         },
                                         {
+                                            "$ref": "#/components/schemas/CreateRenditionJobApiResponse"
+                                        },
+                                        {
                                             "$ref": "#/components/schemas/JobStatusPollPayload"
                                         },
                                         {
@@ -924,23 +927,47 @@
                                     ]
                                 },
                                 "examples": {
-                                    "succeeded": {
-                                        "summary": "Status: Succeeded",
+                                    "succeeded_create_rendition": {
+                                        "summary": "Status: Succeeded (Create Rendition)",
                                         "value": {
-                                            "jobId": "ef4f7daa-0d09-4dcf-9884-029bb7f374ac",
+                                            "jobId": "6f35a027-c578-41e6-9e53-034424c69d14",
                                             "status": "succeeded",
                                             "outputs": [
-                                                {
-                                                    "destination": {
-                                                        "url": "https://example.com/output1.pdf"
-                                                    },
-                                                    "mediaType": "application/pdf"
-                                                },
                                                 {
                                                     "destination": {
                                                         "url": "https://example.com/output2.pdf"
                                                     },
                                                     "mediaType": "application/pdf"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "succeeded_data_merge": {
+                                        "summary": "Status: Succeeded (Data Merge)",
+                                        "value": {
+                                            "jobId": "856745ce-816e-476b-b517-debd9fd91e3b",
+                                            "status": "succeeded",
+                                            "outputs": [
+                                                {
+                                                    "row": 1,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "image/png"
+                                                },
+                                                {
+                                                    "row": 2,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "image/png"
+                                                },
+                                                {
+                                                    "row": 3,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "image/png"
                                                 }
                                             ]
                                         }
@@ -1586,34 +1613,17 @@
                     "url"
                 ]
             },
-            "DataMergeOutput": {
-                "type": "object",
-                "properties": {
-                    "destination": {
-                        "description": "Details of the location where the output is located.",
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/DataMergeOutputDestination"
-                            }
-                        ]
-                    },
-                    "mediaType": {
-                        "type": "string",
-                        "description": "Media type of the output.",
-                        "example": "application/pdf"
-                    }
-                },
-                "required": [
-                    "destination",
-                    "mediaType"
-                ]
-            },
             "DataMergeJobApiResponse": {
                 "type": "object",
-                "title": "Succeeded",
+                "title": "Succeeded (Data Merge)",
+                "description": "Returned when a Data Merge job completes successfully. Each output includes the CSV row index.",
                 "properties": {
                     "status": {
-                        "$ref": "#/components/schemas/JobStatus"
+                        "type": "string",
+                        "description": "The job status.",
+                        "enum": [
+                            "succeeded"
+                        ]
                     },
                     "jobId": {
                         "type": "string",
@@ -1621,10 +1631,10 @@
                         "example": "ef4f7daa-0d09-4dcf-9884-029bb7f374ac"
                     },
                     "outputs": {
-                        "description": "Array of output files from the data merge operation.",
+                        "description": "Array of output files from the data merge operation, one per CSV row.",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/DataMergeOutput"
+                            "$ref": "#/components/schemas/DataMergeOutputWithRow"
                         }
                     }
                 },
@@ -1772,7 +1782,8 @@
                     "row",
                     "destination",
                     "mediaType"
-                ]
+                ],
+                "additionalProperties": false
             },
             "DataMergeJobPartiallySucceededResponse": {
                 "type": "object",
@@ -1983,18 +1994,25 @@
                 "required": [
                     "destination",
                     "mediaType"
-                ]
+                ],
+                "additionalProperties": false
             },
             "CreateRenditionJobApiResponse": {
                 "type": "object",
+                "title": "Succeeded (Create Rendition)",
+                "description": "Returned when a Create Rendition job completes successfully. Output items do not include a CSV row index.",
                 "properties": {
                     "status": {
-                        "$ref": "#/components/schemas/JobStatus"
+                        "type": "string",
+                        "description": "The job status.",
+                        "enum": [
+                            "succeeded"
+                        ]
                     },
                     "jobId": {
                         "type": "string",
                         "description": "The job ID.",
-                        "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                        "example": "6f35a027-c578-41e6-9e53-034424c69d14"
                     },
                     "outputs": {
                         "type": "array",
