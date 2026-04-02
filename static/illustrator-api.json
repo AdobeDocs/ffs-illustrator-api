@@ -1777,7 +1777,7 @@
             "DataMergeJobPartiallySucceededResponse": {
                 "type": "object",
                 "title": "Partially Succeeded",
-                "description": "Returned for Data Merge jobs when some rows produced outputs while others failed or require rerun. Other job types do not use this status.",
+                "description": "Returned ONLY FOR DATA MERGE jobs when some rows produced outputs while others failed or require rerun. Other job types do not use this status.",
                 "properties": {
                     "jobId": {
                         "type": "string",
