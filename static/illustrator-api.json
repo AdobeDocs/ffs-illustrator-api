@@ -27,7 +27,7 @@
             "post": {
                 "operationId": "dataMerge",
                 "summary": "Data merge",
-                "description": "This endpoint allows you to merge variable data from a CSV file with an Adobe Illustrator template. The request is processed asynchronously and the status of the job can be checked using the status URL provided in the response. The output is provided as an array of individual files, one for each row in the CSV data.",
+                "description": "This endpoint allows you to merge variable data from a CSV file with an Adobe Illustrator template. The request is processed asynchronously and the status of the job can be checked using the status URL provided in the response. The output is provided as an array of individual files, one for each row in the CSV data. If some rows succeed and others fail or require rerun, the job completes with status `partially_succeeded` when you poll the status endpoint; that status applies only to Data Merge jobs.",
                 "x-ffs-async-job": true,
                 "x-ffs-job-status-fetcher": "facadeJobStatus",
                 "parameters": [],
@@ -819,7 +819,7 @@
             "get": {
                 "operationId": "facadeJobStatus",
                 "summary": "Retrieve job status",
-                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs.",
+                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). No other job types return the `partially_succeeded` status.<br>When `status` is `succeeded`, for Data Merge jobs each item in `outputs` includes a `row` field; For Create Rendition jobs, output items contain `destination` and `mediaType` only.",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "FacadeAsyncJob",
                 "parameters": [
@@ -913,26 +913,26 @@
                                             "$ref": "#/components/schemas/DataMergeJobApiResponse"
                                         },
                                         {
+                                            "$ref": "#/components/schemas/CreateRenditionJobApiResponse"
+                                        },
+                                        {
                                             "$ref": "#/components/schemas/JobStatusPollPayload"
                                         },
                                         {
                                             "$ref": "#/components/schemas/DataMergeJobFailedResponse"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/DataMergeJobPartiallySucceededResponse"
                                         }
                                     ]
                                 },
-                                "example": {
-                                    "succeeded": {
-                                        "summary": "Status: Succeeded",
+                                "examples": {
+                                    "succeeded_create_rendition": {
+                                        "summary": "Status: Succeeded (Create Rendition)",
                                         "value": {
-                                            "jobId": "ef4f7daa-0d09-4dcf-9884-029bb7f374ac",
+                                            "jobId": "6f35a027-c578-41e6-9e53-034424c69d14",
                                             "status": "succeeded",
                                             "outputs": [
-                                                {
-                                                    "destination": {
-                                                        "url": "https://example.com/output1.pdf"
-                                                    },
-                                                    "mediaType": "application/pdf"
-                                                },
                                                 {
                                                     "destination": {
                                                         "url": "https://example.com/output2.pdf"
@@ -942,11 +942,42 @@
                                             ]
                                         }
                                     },
+                                    "succeeded_data_merge": {
+                                        "summary": "Status: Succeeded (Data Merge)",
+                                        "value": {
+                                            "jobId": "856745ce-816e-476b-b517-debd9fd91e3b",
+                                            "status": "succeeded",
+                                            "outputs": [
+                                                {
+                                                    "row": 1,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "image/png"
+                                                },
+                                                {
+                                                    "row": 2,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "image/png"
+                                                },
+                                                {
+                                                    "row": 3,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "image/png"
+                                                }
+                                            ]
+                                        }
+                                    },
                                     "running": {
                                         "summary": "Status: Running",
                                         "value": {
-                                            "jobId": "0e24f157-a5ca-4723-9009-6599e19887f6",
-                                            "status": "running"
+                                            "jobId": "48db6300-1cc5-4a31-84f6-5092fbd67484",
+                                            "status": "running",
+                                            "Retry-After": "1"
                                         }
                                     },
                                     "failed": {
@@ -956,6 +987,91 @@
                                             "status": "failed",
                                             "error_code": "runtime_error",
                                             "message": "Missing fonts detected: Chabplan-Rg. Please provide font files."
+                                        }
+                                    },
+                                    "partially_succeeded": {
+                                        "summary": "Status: Partially Succeeded (Data Merge only)",
+                                        "value": {
+                                            "jobId": "1dd551c5-6023-4ff9-b736-bc27b36cbb7f",
+                                            "status": "partially_succeeded",
+                                            "outputs": [
+                                                {
+                                                    "row": 135,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "application/pdf"
+                                                },
+                                                {
+                                                    "row": 136,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "application/pdf"
+                                                },
+                                                {
+                                                    "row": 137,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "application/pdf"
+                                                },
+                                                {
+                                                    "row": 138,
+                                                    "destination": {
+                                                        "url": "{your_presigned_get_url}"
+                                                    },
+                                                    "mediaType": "application/pdf"
+                                                }
+                                            ],
+                                            "errors": [
+                                                {
+                                                    "row": 47,
+                                                    "error_code": "runtime_error",
+                                                    "message": "Missing fonts detected: Chabplan-Rg. Please provide font files."
+                                                },
+                                                {
+                                                    "row": 113,
+                                                    "error_code": "runtime_error",
+                                                    "message": "Missing fonts detected: Chabplan-Rg. Please provide font files."
+                                                },
+                                                {
+                                                    "row": 211,
+                                                    "error_code": "runtime_error",
+                                                    "message": "Missing fonts detected: Chabplan-Rg. Please provide font files."
+                                                },
+                                                {
+                                                    "row": 427,
+                                                    "error_code": "runtime_error",
+                                                    "message": "Missing fonts detected: Chabplan-Rg. Please provide font files."
+                                                }
+                                            ],
+                                            "needsRerun": [
+                                                {
+                                                    "rowRange": {
+                                                        "start": 1,
+                                                        "end": 67
+                                                    }
+                                                },
+                                                {
+                                                    "rowRange": {
+                                                        "start": 68,
+                                                        "end": 134
+                                                    }
+                                                },
+                                                {
+                                                    "rowRange": {
+                                                        "start": 202,
+                                                        "end": 268
+                                                    }
+                                                },
+                                                {
+                                                    "rowRange": {
+                                                        "start": 403,
+                                                        "end": 469
+                                                    }
+                                                }
+                                            ]
                                         }
                                     }
                                 }
@@ -1498,34 +1614,17 @@
                     "url"
                 ]
             },
-            "DataMergeOutput": {
-                "type": "object",
-                "properties": {
-                    "destination": {
-                        "description": "Details of the location where the output is located.",
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/DataMergeOutputDestination"
-                            }
-                        ]
-                    },
-                    "mediaType": {
-                        "type": "string",
-                        "description": "Media type of the output.",
-                        "example": "application/pdf"
-                    }
-                },
-                "required": [
-                    "destination",
-                    "mediaType"
-                ]
-            },
             "DataMergeJobApiResponse": {
                 "type": "object",
-                "title": "Succeeded",
+                "title": "Succeeded (Data Merge)",
+                "description": "Returned when a Data Merge job completes successfully. Each output includes the CSV row index.",
                 "properties": {
                     "status": {
-                        "$ref": "#/components/schemas/JobStatus"
+                        "type": "string",
+                        "description": "The job status.",
+                        "enum": [
+                            "succeeded"
+                        ]
                     },
                     "jobId": {
                         "type": "string",
@@ -1533,10 +1632,10 @@
                         "example": "ef4f7daa-0d09-4dcf-9884-029bb7f374ac"
                     },
                     "outputs": {
-                        "description": "Array of output files from the data merge operation.",
+                        "description": "Array of output files from the data merge operation, one per CSV row.",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/DataMergeOutput"
+                            "$ref": "#/components/schemas/DataMergeOutputWithRow"
                         }
                     }
                 },
@@ -1549,20 +1648,38 @@
             "JobStatusPollPayload": {
                 "type": "object",
                 "title": "Running",
+                "description": "Returned while the job is still processing. Poll again after the interval indicated by `Retry-After`.",
                 "properties": {
                     "status": {
-                        "$ref": "#/components/schemas/JobStatus"
+                        "description": "The job status.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/JobStatus"
+                            },
+                            {
+                                "enum": [
+                                    "running"
+                                ]
+                            }
+                        ]
                     },
                     "jobId": {
                         "type": "string",
                         "description": "The job ID.",
-                        "example": "0e24f157-a5ca-4723-9009-6599e19887f6"
+                        "example": "48db6300-1cc5-4a31-84f6-5092fbd67484"
+                    },
+                    "Retry-After": {
+                        "type": "string",
+                        "description": "Suggested number of seconds to wait before sending another request to this endpoint.",
+                        "example": "1"
                     }
                 },
                 "required": [
                     "status",
-                    "jobId"
-                ]
+                    "jobId",
+                    "Retry-After"
+                ],
+                "additionalProperties": false
             },
             "DataMergeJobFailedResponse": {
                 "type": "object",
@@ -1596,6 +1713,142 @@
                     "status",
                     "error_code",
                     "message"
+                ]
+            },
+            "DataMergeRowRange": {
+                "type": "object",
+                "description": "An inclusive range of CSV row indices.",
+                "properties": {
+                    "start": {
+                        "type": "integer",
+                        "description": "The start row index for the range."
+                    },
+                    "end": {
+                        "type": "integer",
+                        "description": "The end row index for the range."
+                    }
+                },
+                "required": [
+                    "start",
+                    "end"
+                ]
+            },
+            "DataMergeNeedsRerunItem": {
+                "type": "object",
+                "description": "A row range that must be rerun after errors are resolved.",
+                "properties": {
+                    "rowRange": {
+                        "description": "The inclusive range of CSV rows to reprocess.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/DataMergeRowRange"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "rowRange"
+                ]
+            },
+            "DataMergePartialSuccessError": {
+                "type": "object",
+                "description": "An error for a specific CSV row when the job completes with partial success.",
+                "properties": {
+                    "row": {
+                        "type": "integer",
+                        "description": "The CSV row index where the error occurred."
+                    },
+                    "error_code": {
+                        "type": "string",
+                        "description": "The error code for this row.",
+                        "example": "runtime_error"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "The error message for this row.",
+                        "example": "Missing fonts detected: Chabplan-Rg. Please provide font files."
+                    }
+                },
+                "required": [
+                    "row",
+                    "error_code",
+                    "message"
+                ]
+            },
+            "DataMergeOutputWithRow": {
+                "type": "object",
+                "description": "A merged output file for a specific CSV row.",
+                "properties": {
+                    "row": {
+                        "type": "integer",
+                        "description": "The CSV row index for this output."
+                    },
+                    "destination": {
+                        "description": "Details of the location where the output is located.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/DataMergeOutputDestination"
+                            }
+                        ]
+                    },
+                    "mediaType": {
+                        "type": "string",
+                        "description": "Media type of the output.",
+                        "example": "application/pdf"
+                    }
+                },
+                "required": [
+                    "row",
+                    "destination",
+                    "mediaType"
+                ],
+                "additionalProperties": false
+            },
+            "DataMergeJobPartiallySucceededResponse": {
+                "type": "object",
+                "title": "Partially Succeeded",
+                "description": "Returned ONLY FOR DATA MERGE jobs when some rows produced outputs while others failed or require rerun. Other job types do not use this status.",
+                "properties": {
+                    "jobId": {
+                        "type": "string",
+                        "description": "The job ID.",
+                        "example": "1dd551c5-6023-4ff9-b736-bc27b36cbb7f"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "partially_succeeded"
+                        ],
+                        "description": "The job status."
+                    },
+                    "outputs": {
+                        "type": "array",
+                        "description": "Output files produced for successfully merged rows.",
+                        "items": {
+                            "$ref": "#/components/schemas/DataMergeOutputWithRow"
+                        }
+                    },
+                    "errors": {
+                        "type": "array",
+                        "description": "Per-row errors for rows that did not produce outputs.",
+                        "items": {
+                            "$ref": "#/components/schemas/DataMergePartialSuccessError"
+                        }
+                    },
+                    "needsRerun": {
+                        "type": "array",
+                        "description": "Row ranges that must be rerun after addressing errors (for example, missing fonts).",
+                        "items": {
+                            "$ref": "#/components/schemas/DataMergeNeedsRerunItem"
+                        }
+                    }
+                },
+                "required": [
+                    "jobId",
+                    "status",
+                    "outputs",
+                    "errors",
+                    "needsRerun"
                 ]
             },
             "CreateRenditionSourceUrl": {
@@ -1760,18 +2013,25 @@
                 "required": [
                     "destination",
                     "mediaType"
-                ]
+                ],
+                "additionalProperties": false
             },
             "CreateRenditionJobApiResponse": {
                 "type": "object",
+                "title": "Succeeded (Create Rendition)",
+                "description": "Returned when a Create Rendition job completes successfully. Output items do not include a CSV row index.",
                 "properties": {
                     "status": {
-                        "$ref": "#/components/schemas/JobStatus"
+                        "type": "string",
+                        "description": "The job status.",
+                        "enum": [
+                            "succeeded"
+                        ]
                     },
                     "jobId": {
                         "type": "string",
                         "description": "The job ID.",
-                        "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                        "example": "6f35a027-c578-41e6-9e53-034424c69d14"
                     },
                     "outputs": {
                         "type": "array",
