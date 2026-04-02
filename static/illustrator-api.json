@@ -975,8 +975,9 @@
                                     "running": {
                                         "summary": "Status: Running",
                                         "value": {
-                                            "jobId": "0e24f157-a5ca-4723-9009-6599e19887f6",
-                                            "status": "running"
+                                            "jobId": "48db6300-1cc5-4a31-84f6-5092fbd67484",
+                                            "status": "running",
+                                            "Retry-After": "1"
                                         }
                                     },
                                     "failed": {
@@ -1647,20 +1648,38 @@
             "JobStatusPollPayload": {
                 "type": "object",
                 "title": "Running",
+                "description": "Returned while the job is still processing. Poll again after the interval indicated by `Retry-After`.",
                 "properties": {
                     "status": {
-                        "$ref": "#/components/schemas/JobStatus"
+                        "description": "The job status.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/JobStatus"
+                            },
+                            {
+                                "enum": [
+                                    "running"
+                                ]
+                            }
+                        ]
                     },
                     "jobId": {
                         "type": "string",
                         "description": "The job ID.",
-                        "example": "0e24f157-a5ca-4723-9009-6599e19887f6"
+                        "example": "48db6300-1cc5-4a31-84f6-5092fbd67484"
+                    },
+                    "Retry-After": {
+                        "type": "string",
+                        "description": "Suggested number of seconds to wait before sending another request to this endpoint.",
+                        "example": "1"
                     }
                 },
                 "required": [
                     "status",
-                    "jobId"
-                ]
+                    "jobId",
+                    "Retry-After"
+                ],
+                "additionalProperties": false
             },
             "DataMergeJobFailedResponse": {
                 "type": "object",
