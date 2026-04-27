@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Illustrator API - Firefly Services",
-        "description": "Illustrator API allows you to perform various operations with an Adobe Illustrator template. Requests are processed asynchronously for Data Merge and Create Rendition. Custom Scripts run on the CXP platform: register a capability (ZIP with `main.jsx` and `manifest.json`) at **`https://illustrator.adobe.io/beta/run-scripts`** (beta) or **`https://illustrator-stage.adobe.io/beta/run-scripts`** (stage), execute it against assets, then poll job status. The execute URL returned at registration may use a CXP host in some environments.",
+        "description": "Illustrator API allows you to perform various operations with an Adobe Illustrator template. The API processes requests asynchronously. Custom Scripts run on the CXP platform: register a capability and execute it against assets, then poll job status.",
         "version": "1.0.0",
         "license": {
             "name": "Adobe Creative API License",
