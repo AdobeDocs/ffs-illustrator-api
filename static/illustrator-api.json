@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Illustrator API - Firefly Services",
-        "description": "Illustrator API allows you to perform various operations with an Adobe Illustrator template. The API processes requests asynchronously. Custom Scripts run on the CXP platform: register a capability and execute it against assets, then poll job status.",
+        "description": "Illustrator API allows you to perform various operations with an Adobe Illustrator template. The API processes requests asynchronously.",
         "version": "1.0.0",
         "license": {
             "name": "Adobe Creative API License",
@@ -1325,31 +1325,45 @@
                         "headers": {
                             "Content-Type": {
                                 "description": "The type of content returned (e.g., application/json).",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Content-Length": {
                                 "description": "The length of the response content.",
-                                "schema": { "type": "integer" }
+                                "schema": {
+                                    "type": "integer"
+                                }
                             },
                             "Access-Control-Allow-Origin": {
                                 "description": "The Cross Origin Resource Sharing (CORS) header.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Allow-Methods": {
                                 "description": "This header indicates what HTTP methods are allowed.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Allow-Headers": {
                                 "description": "This indicates which HTTP headers can be used during the actual request.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Allow-Credentials": {
                                 "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Max-Age": {
                                 "description": "This indicates how long the results of a preflight request can be cached.",
-                                "schema": { "type": "integer" }
+                                "schema": {
+                                    "type": "integer"
+                                }
                             }
                         },
                         "content": {
@@ -1368,91 +1382,271 @@
                     "400": {
                         "description": "Bad Parameter",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "401": {
                         "description": "Unauthorized",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "403": {
                         "description": "Forbidden",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
-                        }
-                    },
-                    "429": {
-                        "description": "Too Many Requests",
-                        "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
-                        },
-                        "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     }
                 }
@@ -1536,39 +1730,57 @@
                         "headers": {
                             "link": {
                                 "description": "The status URL for a retry.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "retry-after": {
                                 "description": "The number of seconds until the user should try again.",
-                                "schema": { "type": "integer" }
+                                "schema": {
+                                    "type": "integer"
+                                }
                             },
                             "Content-Type": {
                                 "description": "The type of content that is returned (e.g., application/json).",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Content-Length": {
                                 "description": "The length of the response content.",
-                                "schema": { "type": "integer" }
+                                "schema": {
+                                    "type": "integer"
+                                }
                             },
                             "Access-Control-Allow-Origin": {
                                 "description": "The Cross Origin Resource Sharing (CORS) header.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Allow-Methods": {
                                 "description": "This indicates what HTTP methods are allowed.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Allow-Headers": {
                                 "description": "This indicates which HTTP headers can be used during the actual request.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Allow-Credentials": {
                                 "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "Access-Control-Max-Age": {
                                 "description": "This indicates how long the results of a preflight request can be cached.",
-                                "schema": { "type": "integer" }
+                                "schema": {
+                                    "type": "integer"
+                                }
                             }
                         },
                         "content": {
@@ -1586,106 +1798,325 @@
                     "400": {
                         "description": "Bad Parameter",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "401": {
                         "description": "Unauthorized",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "403": {
                         "description": "Forbidden",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "422": {
                         "description": "Unprocessable Entity",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
-                        }
-                    },
-                    "429": {
-                        "description": "Too Many Requests",
-                        "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
-                        },
-                        "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "headers": {
-                            "Content-Type": { "description": "The type of content returned (e.g., application/json).", "schema": { "type": "string" } },
-                            "Content-Length": { "description": "The length of the response content.", "schema": { "type": "integer" } },
-                            "Access-Control-Allow-Origin": { "description": "The Cross Origin Resource Sharing (CORS) header.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Methods": { "description": "This header indicates what HTTP methods are allowed.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Headers": { "description": "This indicates which HTTP headers can be used during the actual request.", "schema": { "type": "string" } },
-                            "Access-Control-Allow-Credentials": { "description": "This header is used by servers to indicate that the client shall share HTTP responses.", "schema": { "type": "string" } },
-                            "Access-Control-Max-Age": { "description": "This indicates how long the results of a preflight request can be cached.", "schema": { "type": "integer" } }
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
                         },
                         "content": {
-                            "application/json": { "schema": { "$ref": "#/components/schemas/CustomScriptApiError" } }
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustomScriptApiError"
+                                }
+                            }
                         }
                     }
                 }
@@ -1735,19 +2166,28 @@
                         "headers": {
                             "Content-Type": {
                                 "description": "Media type of the response.",
-                                "schema": { "type": "string", "example": "application/json" }
+                                "schema": {
+                                    "type": "string",
+                                    "example": "application/json"
+                                }
                             },
                             "x-request-id": {
                                 "description": "Unique identifier for the request.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "x-cxp-version": {
                                 "description": "CXP platform version.",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             },
                             "x-cxp-environment": {
                                 "description": "CXP environment (e.g. stage, beta).",
-                                "schema": { "type": "string" }
+                                "schema": {
+                                    "type": "string"
+                                }
                             }
                         },
                         "content": {
