@@ -1296,8 +1296,8 @@
                 "description": "Submits custom script bundles for registration. Returns a URL for posting execution requests for the registered script.",
                 "servers": [
                     {
-                        "url": "https://illustrator.adobe.io",
-                        "description": "Production"
+                        "url": "https://illustrator.adobe.io/beta",
+                        "description": "Beta production"
                     }
                 ],
                 "security": [
@@ -1381,7 +1381,7 @@
                                     "$ref": "#/components/schemas/CapabilityRegistrationResponse"
                                 },
                                 "example": {
-                                    "url": "https://illustrator.adobe.io/v3/<org-id>/<capability-name>",
+                                    "url": "https://illustrator.adobe.io/beta/v3/<org-id>/<capability-name>",
                                     "capability": "<capability-name>",
                                     "version": "<version>"
                                 }
@@ -1674,8 +1674,8 @@
                 "x-ffs-job-status-fetcher": "customScriptsJobStatus",
                 "servers": [
                     {
-                        "url": "https://illustrator.adobe.io",
-                        "description": "Production"
+                        "url": "https://illustrator.adobe.io/beta",
+                        "description": "Beta production"
                     }
                 ],
                 "security": [
@@ -1795,7 +1795,7 @@
                                 },
                                 "example": {
                                     "jobId": "<jobId>",
-                                    "statusUrl": "https://illustrator.adobe.io/v3/status/<jobId>"
+                                    "statusUrl": "https://illustrator.adobe.io/beta/v3/status/<jobId>"
                                 }
                             }
                         }
@@ -2139,8 +2139,8 @@
                 "x-ffs-job-name": "CxpCustomScriptAsyncJob",
                 "servers": [
                     {
-                        "url": "https://illustrator.adobe.io",
-                        "description": "Production"
+                        "url": "https://illustrator.adobe.io/beta",
+                        "description": "Beta production"
                     }
                 ],
                 "security": [
@@ -3098,8 +3098,8 @@
                 "properties": {
                     "url": {
                         "type": "string",
-                        "description": "Base URL for posting custom script execution requests (Illustrator often returns a path such as `.../v3/<org-id>/<capability-name>`).",
-                        "example": "https://illustrator.adobe.io/v3/<org-id>/<capability-name>"
+                        "description": "Base URL for posting custom script execution requests.",
+                        "example": "https://illustrator.adobe.io/beta/v3/<org-id>/<capability-name>"
                     },
                     "capability": {
                         "type": "string",
@@ -3207,7 +3207,7 @@
                     },
                     "statusUrl": {
                         "type": "string",
-                        "description": "URL to poll for custom script job status; typically the Illustrator `.../v3/status/{jobId}` on the same host that accepted the run.",
+                        "description": "URL to poll for custom script job status.",
                         "example": "string"
                     }
                 },
