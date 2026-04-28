@@ -1296,12 +1296,8 @@
                 "description": "Submits custom script bundles for registration. Returns a URL for posting execution requests for the registered script.",
                 "servers": [
                     {
-                        "url": "https://illustrator.adobe.io/beta",
-                        "description": "Beta"
-                    },
-                    {
-                        "url": "https://illustrator-stage.adobe.io/beta",
-                        "description": "Stage"
+                        "url": "https://illustrator.adobe.io",
+                        "description": "Production"
                     }
                 ],
                 "security": [
@@ -1679,11 +1675,7 @@
                 "servers": [
                     {
                         "url": "https://illustrator.adobe.io",
-                        "description": "Beta"
-                    },
-                    {
-                        "url": "https://illustrator-stage.adobe.io",
-                        "description": "Stage"
+                        "description": "Production"
                     }
                 ],
                 "security": [
@@ -2148,11 +2140,7 @@
                 "servers": [
                     {
                         "url": "https://illustrator.adobe.io",
-                        "description": "Beta"
-                    },
-                    {
-                        "url": "https://illustrator-stage.adobe.io",
-                        "description": "Stage"
+                        "description": "Production"
                     }
                 ],
                 "security": [
@@ -2197,7 +2185,7 @@
                                 }
                             },
                             "x-cxp-environment": {
-                                "description": "CXP environment (e.g. stage, beta).",
+                                "description": "CXP environment",
                                 "schema": {
                                     "type": "string"
                                 }
