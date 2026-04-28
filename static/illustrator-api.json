@@ -23,6 +23,10 @@
     ],
     "tags": [
         {
+            "name": "Common Operations",
+            "description": "Data merge, create rendition, and shared job status for asynchronous Illustrator API jobs."
+        },
+        {
             "name": "Custom Scripts",
             "description": "Submit and execute custom scripts for Illustrator automation. Supports comprehensive scripting capabilities for document manipulation and processing"
         }
@@ -30,6 +34,9 @@
     "paths": {
         "/v1/merge-data": {
             "post": {
+                "tags": [
+                    "Common Operations"
+                ],
                 "operationId": "dataMerge",
                 "summary": "Data merge",
                 "description": "This endpoint allows you to merge variable data from a CSV file with an Adobe Illustrator template. The request is processed asynchronously and the status of the job can be checked using the status URL provided in the response. The output is provided as an array of individual files, one for each row in the CSV data. If some rows succeed and others fail or require rerun, the job completes with status `partially_succeeded` when you poll the status endpoint; that status applies only to Data Merge jobs.",
@@ -432,6 +439,9 @@
         },
         "/v1/create-rendition": {
             "post": {
+                "tags": [
+                    "Common Operations"
+                ],
                 "operationId": "createRendition",
                 "summary": "Create rendition",
                 "description": "This endpoint allows you to convert Adobe Illustrator files into various output formats. It supports conversion of .ai documents into multiple web- and print-ready formats. The request is processed asynchronously and the status of the job can be checked using the status URL provided in the response. The output is provided as a single converted file.",
@@ -822,6 +832,9 @@
         },
         "/v1/status/{jobId}": {
             "get": {
+                "tags": [
+                    "Common Operations"
+                ],
                 "operationId": "facadeJobStatus",
                 "summary": "Retrieve job status",
                 "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). No other job types return the `partially_succeeded` status.<br>When `status` is `succeeded`, for Data Merge jobs each item in `outputs` includes a `row` field; For Create Rendition jobs, output items contain `destination` and `mediaType` only.",
