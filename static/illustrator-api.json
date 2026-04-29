@@ -23,7 +23,7 @@
     ],
     "tags": [
         {
-            "name": "Create Rendition and Data Merge",
+            "name": "Data Merge & Create Rendition",
             "description": "Data merge, create rendition, and shared job status for asynchronous Illustrator API jobs."
         },
         {
@@ -35,7 +35,7 @@
         "/v1/merge-data": {
             "post": {
                 "tags": [
-                    "Create Rendition and Data Merge"
+                    "Data Merge & Create Rendition"
                 ],
                 "operationId": "dataMerge",
                 "summary": "Data merge",
@@ -440,7 +440,7 @@
         "/v1/create-rendition": {
             "post": {
                 "tags": [
-                    "Create Rendition and Data Merge"
+                    "Data Merge & Create Rendition"
                 ],
                 "operationId": "createRendition",
                 "summary": "Create rendition",
@@ -833,7 +833,7 @@
         "/v1/status/{jobId}": {
             "get": {
                 "tags": [
-                    "Create Rendition and Data Merge"
+                    "Data Merge & Create Rendition"
                 ],
                 "operationId": "facadeJobStatus",
                 "summary": "Retrieve job status",
