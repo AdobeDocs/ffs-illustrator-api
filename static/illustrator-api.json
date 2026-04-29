@@ -1723,7 +1723,7 @@
                                 ],
                                 "params": {
                                     "targetDocument": "template.ai",
-                                    "outputPath": "<output-folder>"
+                                    "outputFolderPath": "<output-folder>"
                                 }
                             }
                         }
@@ -2080,7 +2080,7 @@
                 ],
                 "operationId": "customScriptsJobStatus",
                 "summary": "Retrieve job status",
-                "description": "Poll execution status for a Custom Scripts job. On success, `outputs` contains presigned download URLs. This endpoint is separate from `/v1/status/{jobId}` (Data Merge and Create Rendition).",
+                "description": "Poll execution status for a Custom Scripts job. When the job succeeds, each entry in `outputs` includes a presigned URL to download a file that was written under the output directory you specified in `params` when starting the job",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "CxpCustomScriptAsyncJob",
                 "servers": [
@@ -2162,7 +2162,7 @@
                                             "data": {
                                                 "conversionDetails": {
                                                     "inputFile": "<input-illustrator-file>",
-                                                    "outputFolder": "<output-folder>",
+                                                    "outputFolderPath": "<output-folder>",
                                                     "success": true
                                                 }
                                             },
@@ -3097,7 +3097,7 @@
             },
             "CustomScriptParams": {
                 "type": "object",
-                "description": "`targetDocument` and `outputPath` are required. Optional: `zip` (when assets are a ZIP), `fontFolderPath`. Keys ending with `Path` specify directory paths relative to the job working directory; the service resolves them to absolute paths for the script.",
+                "description": "• `targetDocument`\n\nSpecifies the input Illustrator (.ai) document to be processed.\n\n• `outputPath`\n\nDefines the directory where the processed output files will be saved.\n\n**Optional parameters**\n\n• `zip`\n\nIndicates that the input assets are provided as a ZIP archive. When specified, the service will extract and process the contents of the archive.\n\n• `fontFolderPath`\n\nSpecifies the directory containing font files required for processing.\n\nIf `fontFolderPath` is provided, the `zip` parameter must also be provided.\n\nKeys ending with `Path` specify directory paths relative to the job working directory; the service resolves them to absolute paths for the script.",
                 "properties": {
                     "targetDocument": {
                         "type": "string",
@@ -3171,7 +3171,7 @@
                         "description": "Name of the input Illustrator file.",
                         "example": "<input-illustrator-file>"
                     },
-                    "outputFolder": {
+                    "outputFolderPath": {
                         "type": "string",
                         "description": "Name of the output folder.",
                         "example": "<output-folder>"
