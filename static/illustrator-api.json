@@ -2079,7 +2079,7 @@
                     "Custom Scripts"
                 ],
                 "operationId": "customScriptsJobStatus",
-                "summary": "Retrieve custom script job status",
+                "summary": "Retrieve job status",
                 "description": "Poll execution status for a Custom Scripts job. On success, `outputs` contains presigned download URLs. This endpoint is separate from `/v1/status/{jobId}` (Data Merge and Create Rendition).",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "CxpCustomScriptAsyncJob",
