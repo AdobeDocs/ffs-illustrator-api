@@ -23,7 +23,7 @@
     ],
     "tags": [
         {
-            "name": "Common Operations",
+            "name": "Create Rendition and Data Merge",
             "description": "Data merge, create rendition, and shared job status for asynchronous Illustrator API jobs."
         },
         {
