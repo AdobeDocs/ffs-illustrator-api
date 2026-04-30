@@ -3136,8 +3136,7 @@
                     }
                 },
                 "required": [
-                    "assets",
-                    "params"
+                    "assets"
                 ]
             },
             "CustomScriptExecuteResponse": {
