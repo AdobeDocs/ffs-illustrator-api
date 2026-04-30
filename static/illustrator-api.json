@@ -3097,15 +3097,14 @@
             },
             "CustomScriptParams": {
                 "type": "object",
-                "description": "• `targetDocument`\n\nSpecifies the input Illustrator (.ai) document to be processed.\n\n• `outputPath`\n\nDefines the directory where the processed output files will be saved.\n\n**Optional parameters**\n\n• `zip`\n\nIndicates that the input assets are provided as a ZIP archive. When specified, the service will extract and process the contents of the archive.\n\n• `fontFolderPath`\n\nSpecifies the directory containing font files required for processing.\n\nIf `fontFolderPath` is provided, the `zip` parameter must also be provided.\n\nKeys ending with `Path` specify directory paths relative to the job working directory; the service resolves them to absolute paths for the script.",
                 "properties": {
                     "targetDocument": {
                         "type": "string",
-                        "description": "Filename of the Illustrator document to process (must match an asset `destination`)."
+                        "description": "Filename of the Illustrator document to process."
                     },
-                    "outputPath": {
+                    "outputFolderPath": {
                         "type": "string",
-                        "description": "Output folder name for generated files."
+                        "description": "Output folder path for generated files."
                     },
                     "zip": {
                         "type": "string",
@@ -3118,9 +3117,8 @@
                 },
                 "required": [
                     "targetDocument",
-                    "outputPath"
-                ],
-                "additionalProperties": true
+                    "outputFolderPath"
+                ]
             },
             "CustomScriptExecuteRequest": {
                 "type": "object",
