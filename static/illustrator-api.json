@@ -3070,7 +3070,7 @@
                 "properties": {
                     "assets": {
                         "type": "array",
-                        "description": "Array of **Input assets**. Information about the assets, which will be used to process the job (for example AI documents, font archives, linked or packaged assets, and so on).",
+                        "description": "Array of **Input assets**. Information about the assets, which will be used to process the job (for example AI documents, font archives, packaged assets, and so on).",
                         "items": {
                             "type": "object",
                             "description": "Information about an input asset the job will use (file reference and local destination name in the job workspace).",
