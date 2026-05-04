@@ -3091,7 +3091,7 @@
                                 },
                                 "destination": {
                                     "type": "string",
-                                    "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params). \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'. or './' Should be a valid file name."
+                                    "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params).\n\nThis provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters.\n\nIt cannot go up using '..' or '/'. or './'. Should be a valid file name."
                                 }
                             },
                             "required": [
@@ -3117,14 +3117,13 @@
                             },
                             "fontFolderPath": {
                                 "type": "string",
-                                "description": "Optional. Relative path to a font folder when required by the script. \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'.  or './' Should be a valid file name. To use this parameter, the `zip` parameter must also be provided."
+                                "description": "Optional. Relative path to a font folder when required by the script.\n\nThis provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters.\n\nIt cannot go up using '..' or '/'.  or './'. Should be a valid file name. To use this parameter, the `zip` parameter must also be provided."
                             }
                         },
                         "required": [
                             "targetDocument",
                             "outputFolderPath"
-                        ],
-                        "x-ffs-note": "Any `params` key ending with `FolderPath` is resolved relative to the job workspace before your script runs. Example — \n\n\"params\": {\n  \"assetDataFolderPath\": \"data\"\n}\n\nThe service expands it to \n\n\"params\": {\n  \"assetDataFolderPath\": \"<parent_local_dir_path>/data\"\n}\n\n(`<parent_local_dir_path>` is assigned by the service.) Other keys are unchanged. Same path rules as `fontFolderPath` (no `..`, no absolute paths, no `./` unless documented)."
+                        ]
                     }
                 },
                 "required": [
