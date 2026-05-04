@@ -3079,7 +3079,6 @@
             },
             "CustomScriptAssetItem": {
                 "type": "object",
-                "title": "InputAsset",
                 "description": "Information about an input asset the job will use (file reference and local destination name in the job workspace).",
                 "properties": {
                     "source": {
@@ -3087,7 +3086,7 @@
                     },
                     "destination": {
                         "type": "string",
-                        "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params)."
+                        "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params). \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'. or './' Should be a valid file name."
                     }
                 },
                 "required": [
@@ -3112,13 +3111,14 @@
                     },
                     "fontFolderPath": {
                         "type": "string",
-                        "description": "Optional. Relative path to a font folder when required by the script."
+                        "description": "Optional. Relative path to a font folder when required by the script. \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'.  or './' Should be a valid file name. To use this parameter, the `zip` parameter must also be provided."
                     }
                 },
                 "required": [
                     "targetDocument",
                     "outputFolderPath"
-                ]
+                ],
+                "x-ffs-note": "Any `params` key ending with `FolderPath` is resolved relative to the job workspace before your script runs. Example — \n\n\"params\": {\n  \"assetDataFolderPath\": \"data\"\n}\n\nThe service expands it to \n\n\"params\": {\n  \"assetDataFolderPath\": \"<parent_local_dir_path>/data\"\n}\n\n(`<parent_local_dir_path>`"
             },
             "CustomScriptExecuteRequest": {
                 "type": "object",
