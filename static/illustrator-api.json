@@ -3064,75 +3064,67 @@
                     "version"
                 ]
             },
-            "CustomScriptAssetSource": {
-                "type": "object",
-                "properties": {
-                    "url": {
-                        "type": "string",
-                        "description": "Presigned URL pointing to the asset.",
-                        "example": "<presigned-url>"
-                    }
-                },
-                "required": [
-                    "url"
-                ]
-            },
-            "CustomScriptAssetItem": {
-                "type": "object",
-                "description": "Information about an input asset the job will use (file reference and local destination name in the job workspace).",
-                "properties": {
-                    "source": {
-                        "$ref": "#/components/schemas/CustomScriptAssetSource"
-                    },
-                    "destination": {
-                        "type": "string",
-                        "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params). \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'. or './' Should be a valid file name."
-                    }
-                },
-                "required": [
-                    "source",
-                    "destination"
-                ]
-            },
-            "CustomScriptParams": {
-                "type": "object",
-                "properties": {
-                    "targetDocument": {
-                        "type": "string",
-                        "description": "Filename of the Illustrator document to process."
-                    },
-                    "outputFolderPath": {
-                        "type": "string",
-                        "description": "Output folder path for generated files."
-                    },
-                    "zip": {
-                        "type": "string",
-                        "description": "Optional. Destination filename of a zipped asset when inputs are packaged as a ZIP."
-                    },
-                    "fontFolderPath": {
-                        "type": "string",
-                        "description": "Optional. Relative path to a font folder when required by the script. \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'.  or './' Should be a valid file name. To use this parameter, the `zip` parameter must also be provided."
-                    }
-                },
-                "required": [
-                    "targetDocument",
-                    "outputFolderPath"
-                ],
-                "x-ffs-note": "Any `params` key ending with `FolderPath` is resolved relative to the job workspace before your script runs. Example — \n\n\"params\": {\n  \"assetDataFolderPath\": \"data\"\n}\n\nThe service expands it to \n\n\"params\": {\n  \"assetDataFolderPath\": \"<parent_local_dir_path>/data\"\n}\n\n(`<parent_local_dir_path>`"
-            },
             "CustomScriptExecuteRequest": {
                 "type": "object",
                 "description": "This job request object specifies parameters for the execution of the custom script.",
                 "properties": {
                     "assets": {
                         "type": "array",
+                        "description": "Array of **Input assets**. Information about the assets, which will be used to process the job (for example AI documents, font archives, linked or packaged assets, and so on).",
                         "items": {
-                            "$ref": "#/components/schemas/CustomScriptAssetItem"
-                        },
-                        "description": "Array of **Input assets**. Information about the assets, which will be used to process the job (for example AI documents, font archives, linked or packaged assets, and so on)."
+                            "type": "object",
+                            "description": "Information about an input asset the job will use (file reference and local destination name in the job workspace).",
+                            "properties": {
+                                "source": {
+                                    "type": "object",
+                                    "description": "Presigned URL for the asset.",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string",
+                                            "description": "Presigned URL pointing to the asset.",
+                                            "example": "<presigned-url>"
+                                        }
+                                    },
+                                    "required": [
+                                        "url"
+                                    ]
+                                },
+                                "destination": {
+                                    "type": "string",
+                                    "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params). \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'. or './' Should be a valid file name."
+                                }
+                            },
+                            "required": [
+                                "source",
+                                "destination"
+                            ]
+                        }
                     },
                     "params": {
-                        "$ref": "#/components/schemas/CustomScriptParams"
+                        "type": "object",
+                        "properties": {
+                            "targetDocument": {
+                                "type": "string",
+                                "description": "Filename of the Illustrator document to process."
+                            },
+                            "outputFolderPath": {
+                                "type": "string",
+                                "description": "Output folder path for generated files."
+                            },
+                            "zip": {
+                                "type": "string",
+                                "description": "Optional. Destination filename of a zipped asset when inputs are packaged as a ZIP."
+                            },
+                            "fontFolderPath": {
+                                "type": "string",
+                                "description": "Optional. Relative path to a font folder when required by the script. \n This provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters. It cannot go up using '..' or '/'.  or './' Should be a valid file name. To use this parameter, the `zip` parameter must also be provided."
+                            }
+                        },
+                        "required": [
+                            "targetDocument",
+                            "outputFolderPath"
+                        ],
+                        "x-ffs-note": "Any `params` key ending with `FolderPath` is resolved relative to the job workspace before your script runs. Example — \n\n\"params\": {\n  \"assetDataFolderPath\": \"data\"\n}\n\nThe service expands it to \n\n\"params\": {\n  \"assetDataFolderPath\": \"<parent_local_dir_path>/data\"\n}\n\n(`<parent_local_dir_path>` is assigned by the service.) Other keys are unchanged. Same path rules as `fontFolderPath` (no `..`, no absolute paths, no `./` unless documented)."
                     }
                 },
                 "required": [
