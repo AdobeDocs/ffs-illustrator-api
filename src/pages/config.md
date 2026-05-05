@@ -28,5 +28,5 @@
     - [Authentication](/getting-started/index.md)
     - [Technical Usage Notes](/getting-started/usage/index.md)
     - Learn More header
-    - [Custom Script Guide](/getting-started/custom-scripts/index.md)
+    - [Custom Script Guide](/guides/custom-scripts/index.md)
     - [Key Concepts](/getting-started/concepts/index.md)

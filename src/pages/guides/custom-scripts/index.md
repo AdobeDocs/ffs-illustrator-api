@@ -43,7 +43,7 @@ my-capability.zip
 ```
 
 - **script.jsx**: The script file that **must** define a `main()` function as the entry point.
-- **manifest.json**: Contains capability metadata. The capability name used in the execute URL is derived from this file. Please refer to [API Capability Naming Rules](../concepts/index.md#api-capability-naming-rules) for script name requirements.
+- **manifest.json**: Contains capability metadata. The capability name used in the execute URL is derived from this file. Please refer to [API Capability Naming Rules](../../getting-started/concepts/index.md#api-capability-naming-rules) for script name requirements.
 
 ## Required input in a custom script
 

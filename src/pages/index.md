@@ -53,7 +53,7 @@ These beta services include:
 - [Execute a custom script](api/beta/index.md#operation/executeCustomScriptCapability)
 
 You find more information about the Custom Scripts (beta) service in the [Custom Scripts API (public beta)](api/beta/index.md) reference.
-You find more information about how to write and execute custom scripts in the [Custom Script Guide](getting-started/custom-scripts/index.md).
+You find more information about how to write and execute custom scripts in the [Custom Script Guide](guides/custom-scripts/index.md).
 
 ## Discover
 

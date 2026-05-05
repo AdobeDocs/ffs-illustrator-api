@@ -190,7 +190,7 @@ The execution of any script depends on the following attributes:
 | `jobID` | Auto-generated | The job ID. |
 | `workingFolder` | Auto-generated | The working folder for the job. This is the base directory. Inside this directory, all the assets and scripts are downloaded. (for example c:\\baseFolder\\assets). |
 
-For examples, see [Custom Script Guide](../custom-scripts/index.md).
+For examples, see [Custom Script Guide](../../guides/custom-scripts/index.md).
 
 ### Zipping and updating a custom script bundle
 
