@@ -51,6 +51,16 @@ Get started with authentication and other prerequisites.
 
 Try the API with Swagger UI. Explore, make calls, with full endpoint descriptions.
 
+## Beta endpoints
+
+<DiscoverBlock slots="heading, link, text"/>
+
+### Custom Scripts API (public beta)
+
+[**Try the Illustrator beta API**](api/beta/index.md)
+
+Explore the public beta reference for Custom Scripts. APIs in this section are subject to change.
+
 <Resources slots="heading, links"/>
 
 #### Resources
