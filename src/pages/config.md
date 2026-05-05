@@ -16,7 +16,10 @@
         - [Content Tagging API](https://experienceleague.adobe.com/docs/experience-platform/intelligent-services/content-commerce-ai/overview.html) Docs and references for Content Tagging services.
     - [About Illustrator API](/index.md)
     - [Getting Started](/getting-started/index.md)
-    - [API Reference](/api/index.md)
+    - [Guides](/guides/index.md)
+    - API Reference
+        - [Illustrator API](/api/index.md)
+        - [Illustrator API - beta services](/api/beta/index.md)
 
 - buttons:
     - [Support](https://airtable.com/appu5RTWgdM95jynx/pagyuT1qspNJcPU2E/form)
@@ -25,4 +28,7 @@
 - subPages:
     - Getting Started header
     - [Authentication](/getting-started/index.md)
-    - [Technical Usage Notes](/getting-started/usage/index.md)
+    - [Key concepts](/getting-started/concepts/index.md)
+    - [Technical usage notes](/getting-started/usage/index.md)
+    - Guides header
+    - [Using Custom Scripts (beta)](/guides/custom-scripts/index.md)
