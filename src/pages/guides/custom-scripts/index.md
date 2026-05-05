@@ -30,7 +30,9 @@ twitter:
 
 Use this document to construct and execute custom script files for the Illustrator Custom Scripts API.
 
-The script's author defines the custom attributes and values for a particular endpoint using *script.jsx* files in the custom script bundle. Refer to the examples below to construct your scripts.
+Illustrator API supports custom scripts. The script's author defines the custom attributes and values for a particular endpoint using *script.jsx* files in the custom script bundle. Refer to the examples below to construct your scripts.
+
+If you aren't familiar with the concept of custom scripts, you can find more information in the [Key concepts](/getting-started/concepts/index.md) section.
 
 ## Custom script ZIP structure
 
