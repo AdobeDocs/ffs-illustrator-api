@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Illustrator API (Public Beta) - Firefly Services",
-        "description": "Public beta surface for Custom Scripts endpoints. APIs in this document are subject to change.",
+        "title": "Illustrator API (public beta) - Firefly Services",
+        "description": "This is the Illustrator API public beta reference documentation for the Custom Scripts endpoints. APIs in this document are subject to change.",
         "version": "1.0.0-beta",
         "license": {
             "name": "Adobe Creative API License",
@@ -12,7 +12,7 @@
     "servers": [
         {
             "url": "https://illustrator.adobe.io",
-            "description": "Beta endpoint."
+            "description": "Public beta server"
         }
     ],
     "security": [
@@ -24,7 +24,7 @@
     "tags": [
         {
             "name": "Custom Scripts",
-            "description": "Submit and execute custom scripts for Illustrator automation. Supports comprehensive scripting capabilities for document manipulation and processing"
+            "description": "Submit and execute custom scripts for Illustrator automation. These services support comprehensive scripting capabilities for document manipulation and processing."
         }
     ],
     "paths": {
