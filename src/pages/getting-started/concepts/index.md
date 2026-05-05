@@ -74,7 +74,7 @@ To create a script to use with the Custom Scripts API, you'll need to prepare a 
 
 The structure for a simple custom script bundle would look like this:
 
-```plaintext
+```text
 custom-script-folder
 |------ manifest.json
 |------ script.js

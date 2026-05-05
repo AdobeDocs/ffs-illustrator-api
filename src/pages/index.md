@@ -24,6 +24,8 @@ Adobe Illustrator, the industry-standard vector graphics app that lets you creat
 
 With Firefly's Illustrator API, automate Adobe Illustrator's functionality for use cases like rendition, preview, data merge, custom script, image trace, Recolor, Manifest, and Document operations, and everything in between.
 
+Explore all the services details in the [Illustrator API reference](api/index.md).
+
 ### What's the Illustrator Data Merge service?
 
 Data merge uses Adobe Illustrator to create variations of a document by substituting placeholder variables with data from external sources.
@@ -34,6 +36,24 @@ Merge an Illustrator document with a data source file. Create one design, and th
 ### What's the Illustrator Rendition service?
 
 The Rendition service allows you to convert Adobe Illustrator files into various output formats. It supports conversion of .ai documents into multiple web- and print-ready formats. The output is provided as a single converted file.
+
+### What's the Illustrator Custom Scripts (beta) service?
+
+<inlinealert variant="info" slots="heading, text"/>
+
+ Public beta
+
+The Custom Scripts services are in public beta. They are available to all users but APIs in this section are subject to change.
+
+The Custom Scripts (beta) service allows you to execute custom scripts for Adobe Illustrator. It supports comprehensive scripting capabilities for document manipulation and processing.
+
+These beta services include:
+
+- [Submit a custom script](api/beta/index.md#operation/registerCustomScriptCapability)
+- [Execute a custom script](api/beta/index.md#operation/executeCustomScriptCapability)
+
+You find more information about the Custom Scripts (beta) service in the [Custom Scripts API (public beta)](api/beta/index.md) reference.
+You find more information about how to write and execute custom scripts in the [Custom Script Guide](getting-started/custom-scripts/index.md).
 
 ## Discover
 
@@ -51,15 +71,13 @@ Get started with authentication and other prerequisites.
 
 Try the API with Swagger UI. Explore, make calls, with full endpoint descriptions.
 
-## Beta endpoints
-
 <DiscoverBlock slots="heading, link, text"/>
 
 ### Custom Scripts API (public beta)
 
-[**Try the Illustrator beta API**](api/beta/index.md)
+[**Try the Illustrator Custom Scripts (beta) API**](api/beta/index.md)
 
-Explore the public beta reference for Custom Scripts. APIs in this section are subject to change.
+Explore the public beta reference for Custom Scripts.
 
 <Resources slots="heading, links"/>
 

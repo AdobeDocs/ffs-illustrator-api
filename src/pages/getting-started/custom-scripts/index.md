@@ -36,7 +36,7 @@ The script's author defines the custom attributes and values for a particular en
 
 The custom script must be packaged as a ZIP archive containing:
 
-```
+```text
 my-capability.zip
   ├── script.jsx     — Script with main() function
   └── manifest.json  — Capability metadata
@@ -44,8 +44,6 @@ my-capability.zip
 
 - **script.jsx**: The script file that **must** define a `main()` function as the entry point.
 - **manifest.json**: Contains capability metadata. The capability name used in the execute URL is derived from this file. Please refer to [API Capability Naming Rules](../concepts/index.md#api-capability-naming-rules) for script name requirements.
-
-
 
 ## Required input in a custom script
 
@@ -125,7 +123,7 @@ For example, below is a sample input and sample script code to open a document a
 
 Structure after unzipping `assets.zip`:
 
-```
+```text
 C:\\basefolder\\assets
                   ├── pngData/
                   └── jpegData/
@@ -148,6 +146,7 @@ C:\\basefolder\\assets
     }
 }
 ```
+
 Any parameter ending with `"FolderPath"` will be processed and converted to an absolute path, as done with `"assetDataFolderPath"`.
 
 
@@ -250,6 +249,7 @@ When a custom script execution fails, the status API returns a response with `"s
 | `errors` | An array of error objects. Each entry contains an `error_code` and a `message` describing the failure. |
 
 ## Logging
+
 Logging can be important for debugging your own scripts and to keep track of decisions made during a script execution.
 
 You can log data to a `<debug>.log` file, which will be created in `outputFolderPath` via the script.
