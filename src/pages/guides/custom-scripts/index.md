@@ -156,7 +156,6 @@ Any parameter ending with `"FolderPath"` will be processed and converted to an a
 
 ```javascript
 var inputFile = new File(paramsMap.targetDocument);
-var outputFolder = paramsMap.outputFolderPath;
 var jpegDataPath = paramsMap.assetDataFolderPath + "/jpegData/";
 var extraParam = paramsMap.someParam;
 
@@ -165,11 +164,11 @@ if (!inputFile.exists) {
 }
 
 var doc = app.open(inputFile);
-var outputPath = paramsMap.outputPath + "/result_output.ai";
-var outputFile = new File(outputPath);
+var outputFilePath = paramsMap.outputFolderPath + "/result_output.ai";
 
 someProcessing(extraParam, jpegDataPath);
 
+var outputFile = new File(outputFilePath);
 doc.exportAsFormat(ExportFileType.ET_AI, outputFile);
 doc.close(SaveOptions.DONOTSAVECHANGES);
 ```
