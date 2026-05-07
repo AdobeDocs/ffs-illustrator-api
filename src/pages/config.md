@@ -32,3 +32,4 @@
     - [Technical usage notes](/getting-started/usage/index.md)
     - Guides header
     - [Using Custom Scripts (beta)](/guides/custom-scripts/index.md)
+    - [vectorize (beta)](/guides/image-vectorize/index.md)

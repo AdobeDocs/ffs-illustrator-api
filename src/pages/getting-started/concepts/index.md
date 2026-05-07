@@ -6,6 +6,7 @@ keywords:
   - Illustrator automation
   - document processing
   - Custom Scripts API
+  - vectorize
   - REST API
   - cloud services
   - design automation
@@ -65,6 +66,12 @@ Illustrator APIs support the following input assets:
 In the examples above, you can see that data is divided into `source` and `destination`.
 
 The `source` attribute is where the asset is downloaded from. The `destination` attribute refers to where the asset would be downloaded to.
+
+## About vectorize (beta)
+
+The **vectorize** public beta service turns raster artwork (PNG or JPEG) into SVG output using server-side Image Trace-style processing. You submit a job with an **`input`** object (`source.url` + `mediaType`) and optional **`settings`** fields (`preset`, `generateSvg`, `autoSettings`). The job runs asynchronously; poll **`GET /v1/status/{jobId}`** for completion and read presigned download URLs from the response when the job succeeds.
+
+For a step-by-step guide, see [vectorize guide](../../guides/image-vectorize/index.md).
 
 ## About custom script bundles
 

@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Illustrator API (public beta) - Firefly Services",
-        "description": "This is the Illustrator API public beta reference documentation for the Custom Scripts endpoints. APIs in this document are subject to change.",
+        "description": "This is the Illustrator API public beta reference documentation for the Custom Scripts and vectorize endpoints. APIs in this document are subject to change.",
         "version": "1.0.0-beta",
         "license": {
             "name": "Adobe Creative API License",
@@ -25,6 +25,10 @@
         {
             "name": "Custom Scripts",
             "description": "Submit and execute custom scripts for Illustrator automation. These services support comprehensive scripting capabilities for document manipulation and processing."
+        },
+        {
+            "name": "vectorize",
+            "description": "Convert raster artwork to vector format using Illustrator image trace / vectorization. Jobs run asynchronously; poll job status for presigned output URL."
         }
     ],
     "paths": {
@@ -823,7 +827,7 @@
                 ],
                 "operationId": "customScriptsJobStatus",
                 "summary": "Retrieve job status",
-                "description": "Poll execution status for a Custom Scripts job. When the job succeeds, each entry in `outputs` includes a presigned URL to download a file that was written under the output directory you specified in `params` when starting the job",
+                "description": "Poll execution status for a Custom Scripts job. Use this after calling custom script execute. When the job succeeds, each entry in `outputs` includes a presigned URL to download an output file.",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "CxpCustomScriptAsyncJob",
                 "servers": [
@@ -1000,6 +1004,538 @@
                     }
                 }
             }
+        },
+        "/v1/images/vectorize": {
+            "post": {
+                "tags": [
+                    "vectorize"
+                ],
+                "operationId": "submitImageVectorizeJob",
+                "summary": "Submit a vectorize job",
+                "description": "Submits a raster-to-vector (Image Trace) job. The request format mirrors other Illustrator async APIs by using `input` and `settings`. Supported inputs are PNG and JPEG. Poll **Retrieve job status** (`GET /v1/status/{jobId}`) using the `jobId` or `statusUrl` from the response. On success, `outputs` contains presigned URLs for generated SVG output.",
+                "x-ffs-async-job": true,
+                "x-ffs-job-status-fetcher": "vectorizeJobStatus",
+                "servers": [
+                    {
+                        "url": "https://illustrator.adobe.io/beta",
+                        "description": "Beta production"
+                    }
+                ],
+                "security": [
+                    {
+                        "AccessToken": [],
+                        "X-Api-Key": []
+                    }
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "description": "Vectorize request with `input` and `settings`.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ImageVectorizeRequest"
+                            },
+                            "example": {
+                                "input": {
+                                    "source": {
+                                        "url": "<presigned-url>"
+                                    },
+                                    "mediaType": "image/png"
+                                },
+                                "settings": {
+                                    "preset": "auto",
+                                    "generateSvg": true,
+                                    "autoSettings": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "The job has been accepted for processing.",
+                        "headers": {
+                            "link": {
+                                "description": "The status URL for a retry.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "retry-after": {
+                                "description": "The number of seconds until the user should try again.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Content-Type": {
+                                "description": "The type of content that is returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeSubmitResponse"
+                                },
+                                "example": {
+                                    "jobId": "<jobId>",
+                                    "statusUrl": "https://illustrator.adobe.io/beta/v1/status/<jobId>"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Parameter",
+                        "headers": {
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "headers": {
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "headers": {
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "headers": {
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "Content-Type": {
+                                "description": "The type of content returned (e.g., application/json).",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Content-Length": {
+                                "description": "The length of the response content.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Access-Control-Allow-Origin": {
+                                "description": "The Cross Origin Resource Sharing (CORS) header.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "description": "This header indicates what HTTP methods are allowed.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "description": "This indicates which HTTP headers can be used during the actual request.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Allow-Credentials": {
+                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "Access-Control-Max-Age": {
+                                "description": "This indicates how long the results of a preflight request can be cached.",
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/status/{jobId}": {
+            "get": {
+                "tags": [
+                    "vectorize"
+                ],
+                "operationId": "vectorizeJobStatus",
+                "summary": "Retrieve job status",
+                "description": "Poll execution status for a vectorize job. Use this after calling submit vectorize. When the job succeeds, each output item includes a presigned URL and SVG media type.",
+                "x-ffs-status-fetcher": true,
+                "x-ffs-job-name": "VectorizeAsyncJob",
+                "servers": [
+                    {
+                        "url": "https://illustrator.adobe.io/beta",
+                        "description": "Beta production"
+                    }
+                ],
+                "security": [
+                    {
+                        "AccessToken": [],
+                        "X-Api-Key": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Job ID returned from submit vectorize.",
+                        "schema": {
+                            "type": "string",
+                            "example": "ee45451e-3a84-4a81-aa21-7f00aa3302a4"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/VectorizeJobSucceededResponse"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/VectorizeJobRunningResponse"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/VectorizeJobFailedResponse"
+                                        }
+                                    ]
+                                },
+                                "examples": {
+                                    "succeeded": {
+                                        "summary": "Execution Success",
+                                        "value": {
+                                            "jobId": "<jobId>",
+                                            "status": "succeeded",
+                                            "outputs": [
+                                                {
+                                                    "destination": {
+                                                        "url": "<presigned-url>"
+                                                    },
+                                                    "mediaType": "image/svg+xml"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "running": {
+                                        "summary": "Execution Running",
+                                        "value": {
+                                            "jobId": "<jobId>",
+                                            "status": "running"
+                                        }
+                                    },
+                                    "failed": {
+                                        "summary": "Execution Failed",
+                                        "value": {
+                                            "jobId": "<jobId>",
+                                            "status": "failed",
+                                            "error_code": "<error_code>",
+                                            "message": "<message>"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VectorizeApiError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -1111,16 +1647,36 @@
             },
             "CustomScriptExecuteResponse": {
                 "type": "object",
-                "description": "Returned when the execution request is accepted (HTTP 202).",
+                "description": "Returned when a Custom Scripts execution request is accepted (HTTP 202).",
                 "properties": {
                     "jobId": {
                         "type": "string",
-                        "description": "Job identifier. Use with **Retrieve custom script job status** on `GET /v3/status/{jobId}`.",
+                        "description": "Job identifier. Use with **Retrieve job status** on `GET /v3/status/{jobId}` for Custom Scripts jobs.",
                         "example": "string"
                     },
                     "statusUrl": {
                         "type": "string",
-                        "description": "URL to poll for custom script job status.",
+                        "description": "URL to poll for job status.",
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "jobId",
+                    "statusUrl"
+                ]
+            },
+            "VectorizeSubmitResponse": {
+                "type": "object",
+                "description": "Returned when a vectorize submit request is accepted (HTTP 202).",
+                "properties": {
+                    "jobId": {
+                        "type": "string",
+                        "description": "Job identifier. Use with **Retrieve job status** on `GET /v1/status/{jobId}` for vectorize jobs.",
+                        "example": "string"
+                    },
+                    "statusUrl": {
+                        "type": "string",
+                        "description": "URL to poll for vectorize job status (`/v1/status/{jobId}`).",
                         "example": "string"
                     }
                 },
@@ -1310,6 +1866,306 @@
                 }
             },
             "CustomScriptApiError": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "error_code": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "message",
+                    "error_code"
+                ]
+            },
+            "ImageVectorizeRequest": {
+                "type": "object",
+                "description": "Request body for a vectorize job. Input accepts PNG/JPEG and output is SVG when `generateSvg` is true.",
+                "properties": {
+                    "input": {
+                        "description": "Input raster source and media type.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ImageVectorizeInput"
+                            }
+                        ]
+                    },
+                    "settings": {
+                        "description": "Settings that control vectorization behavior and SVG generation.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ImageVectorizeSettings"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "input"
+                ]
+            },
+            "ImageVectorizeSourceUrl": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "description": "The URL pointing to the input raster file.",
+                        "example": "https://your-bucket.s3.amazonaws.com/your-image.png"
+                    }
+                },
+                "required": [
+                    "url"
+                ]
+            },
+            "ImageVectorizeInputMediaType": {
+                "type": "string",
+                "description": "The media type of the input raster file.",
+                "enum": [
+                    "image/png",
+                    "image/jpeg"
+                ]
+            },
+            "ImageVectorizeInput": {
+                "type": "object",
+                "properties": {
+                    "source": {
+                        "description": "The source containing the raster file to vectorize.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ImageVectorizeSourceUrl"
+                            }
+                        ]
+                    },
+                    "mediaType": {
+                        "description": "The media type of the source file.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ImageVectorizeInputMediaType"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "source",
+                    "mediaType"
+                ]
+            },
+            "ImageVectorizeSettings": {
+                "type": "object",
+                "properties": {
+                    "preset": {
+                        "type": "string",
+                        "description": "Optional vectorization preset name (case-insensitive). If omitted, preset is auto-selected from image complexity. Invalid values return 400.",
+                        "example": "auto"
+                    },
+                    "generateSvg": {
+                        "type": "boolean",
+                        "description": "When true, generate SVG output (`image/svg+xml`). If omitted, defaults to true.",
+                        "default": true
+                    },
+                    "autoSettings": {
+                        "type": "boolean",
+                        "description": "When true, choose settings automatically (for example color count from image) and skip applying most manual tuning fields in the legacy path. If omitted, defaults to true.",
+                        "default": true
+                    },
+                    "colorMode": {
+                        "type": "string",
+                        "description": "Color mode. Supported values: `color`, `grayscale`, `black_and_white`.",
+                        "example": "color"
+                    },
+                    "colorPaletteType": {
+                        "type": "string",
+                        "description": "Palette behavior for color mode. Supported values: `automatic`, `limited`, `fulltone`.",
+                        "example": "automatic"
+                    },
+                    "numberOfColors": {
+                        "type": "integer",
+                        "description": "Max colors when `colorMode` is `color` and `colorPaletteType` is `limited`. Minimum 1.",
+                        "minimum": 1,
+                        "example": 8
+                    },
+                    "colorFidelity": {
+                        "type": "number",
+                        "description": "Color accuracy percentage when in color mode with automatic or fulltone palette.",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "example": 50
+                    },
+                    "grayscale": {
+                        "type": "number",
+                        "description": "Grayscale accuracy percentage when `colorMode` is `grayscale`.",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "example": 75
+                    },
+                    "blackAndWhiteThreshold": {
+                        "type": "integer",
+                        "description": "Pixels darker than this become black when `colorMode` is `black_and_white`.",
+                        "minimum": 1,
+                        "maximum": 255,
+                        "example": 128
+                    },
+                    "pathFidelity": {
+                        "type": "number",
+                        "description": "Path fitting tightness percentage.",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "example": 50
+                    },
+                    "cornerFidelity": {
+                        "type": "number",
+                        "description": "Corner emphasis percentage.",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "example": 50
+                    },
+                    "noiseFidelity": {
+                        "type": "integer",
+                        "description": "Noise reduction strength. Larger values ignore smaller regions.",
+                        "minimum": 1,
+                        "maximum": 100,
+                        "example": 10
+                    },
+                    "overlappingPaths": {
+                        "type": "boolean",
+                        "description": "When true, use stacked paths; when false, use cut-out (abutting) paths.",
+                        "example": true
+                    },
+                    "filledPaths": {
+                        "type": "boolean",
+                        "description": "When true, produce filled regions.",
+                        "example": true
+                    },
+                    "strokedPaths": {
+                        "type": "boolean",
+                        "description": "When true, produce stroked paths.",
+                        "example": false
+                    },
+                    "maxStrokeWeight": {
+                        "type": "integer",
+                        "description": "Maximum stroke width in pixels when stroked paths are enabled.",
+                        "minimum": 1,
+                        "example": 4
+                    },
+                    "snapCurvesToLines": {
+                        "type": "boolean",
+                        "description": "When true, replace slightly curved segments with straight lines.",
+                        "example": false
+                    },
+                    "ignoreWhite": {
+                        "type": "boolean",
+                        "description": "When true, remove white fills.",
+                        "example": true
+                    }
+                }
+            },
+            "VectorizeOutputItem": {
+                "type": "object",
+                "properties": {
+                    "destination": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string",
+                                "description": "Presigned download URL."
+                            }
+                        },
+                        "required": [
+                            "url"
+                        ]
+                    },
+                    "mediaType": {
+                        "type": "string",
+                        "enum": [
+                            "image/svg+xml"
+                        ],
+                        "description": "Media type of the generated output."
+                    }
+                },
+                "required": [
+                    "destination",
+                    "mediaType"
+                ]
+            },
+            "VectorizeJobSucceededResponse": {
+                "type": "object",
+                "title": "Execution Success",
+                "properties": {
+                    "jobId": {
+                        "type": "string",
+                        "example": "<jobId>"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "succeeded"
+                        ]
+                    },
+                    "outputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/VectorizeOutputItem"
+                        }
+                    }
+                },
+                "required": [
+                    "jobId",
+                    "status",
+                    "outputs"
+                ]
+            },
+            "VectorizeJobRunningResponse": {
+                "type": "object",
+                "title": "Execution Running",
+                "properties": {
+                    "jobId": {
+                        "type": "string",
+                        "example": "<jobId>"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "running"
+                        ]
+                    }
+                },
+                "required": [
+                    "jobId",
+                    "status"
+                ]
+            },
+            "VectorizeJobFailedResponse": {
+                "type": "object",
+                "title": "Execution Failed",
+                "properties": {
+                    "jobId": {
+                        "type": "string",
+                        "example": "<jobId>"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "failed"
+                        ]
+                    },
+                    "error_code": {
+                        "type": "string",
+                        "example": "<error_code>"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "<message>"
+                    }
+                },
+                "required": [
+                    "jobId",
+                    "status",
+                    "error_code",
+                    "message"
+                ]
+            },
+            "VectorizeApiError": {
                 "type": "object",
                 "properties": {
                     "message": {
