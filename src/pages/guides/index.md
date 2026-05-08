@@ -1,8 +1,6 @@
 ---
 title: Guides - Firefly Services Illustrator API
-description: >-
-  In-depth guides for the Illustrator API, including custom script bundles,
-  Data Merge template setup, capability metadata, and integration patterns.
+description: In-depth guides for the Illustrator API, including custom script bundles, Data Merge template setup, capability metadata, and integration patterns.
 hideBreadcrumbNav: true
 keywords:
   - firefly

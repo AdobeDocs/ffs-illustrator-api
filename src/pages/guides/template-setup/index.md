@@ -1,8 +1,6 @@
 ---
 title: Template setup guide for Illustrator API Data Merge
-description: >-
-  Prepare Adobe Illustrator templates and data sources for the Data merge API
-  using desktop variables workflows, with links to HelpX for detailed steps.
+description: Prepare Adobe Illustrator templates and data sources for the Data merge API using desktop variables workflows, with links to HelpX for detailed steps.
 keywords:
   - Adobe Illustrator API
   - Data merge
@@ -12,35 +10,22 @@ keywords:
   - Firefly Services
   - REST API
   - design automation
-og:
-  title: Template setup guide for Illustrator API Data Merge
-  description: >-
-    Prepare Illustrator templates and data for the Data merge API with HelpX
-    references for variables and data sources.
-twitter:
-  card: summary
-  title: Template setup guide for Illustrator API Data Merge
-  description: >-
-    Prepare Illustrator templates and data for the Data merge API with HelpX
-    references for variables and data sources.
 hideBreadcrumbNav: true
 ---
 
 # Template setup guide for Data Merge templates
 
-Use this guide when you are preparing an Adobe Illustrator (`.ai`) file and related data so you can run **Data merge** jobs through the [Illustrator API](../api/index.md). It summarizes what you do in **Illustrator on the desktop** and points to official HelpX topics for step-by-step UI instructions.
+Use this guide when you are preparing an Adobe Illustrator (`.ai`) file and related data so you can **run Data merge jobs** through the [Illustrator API](../../api/index.md). It summarizes what you do in **Illustrator on the desktop** and points to official HelpX topics for step-by-step UI instructions.
 
-## Overview
+## When do API users need these instructions?
 
-**When do API users need these instructions?** Before you call the asynchronous **Data merge** operation (see the API reference under **Data Merge & Create Rendition**), you need a template whose variables and bindings match how each CSV row should populate the artwork. For service behavior and limits (for example, CSV row count, asset size, and automatic variable-to-object mapping), see [Technical usage notes — About auto-mapping for Data Merge](../getting-started/usage/index.md).
+Before you call the [asynchronous Data merge operation](../../api/index.md), you need a template whose variables and bindings match how each CSV row should populate the artwork.
 
-**Do you need the Illustrator app?** **Yes, for authoring the template.** Variables, data sets, bindings, and typical CSV or XML preparation are done in Illustrator (for example, through the **Variables** panel). The API merges **CSV** data with your uploaded template in the cloud; it does not replace building or validating that template in the product.
+For service behavior and limits (for example, CSV row count, asset size, and automatic variable-to-object mapping), see [Technical usage notes — About auto-mapping for Data Merge](../../getting-started/usage/index.md).
 
-<InlineAlert variant="info" slots="text"/>
+**For authoring the template, you'll need to use the Illustrator app.** Variables, data sets, bindings, and typical CSV or XML preparation are done in Illustrator (for example, through the **Variables** panel). The API merges **CSV** data with your uploaded template in the cloud; it does not replace building or validating that template in the product.
 
-HelpX describes both **CSV** and **XML** data sources and desktop-only steps such as batch export through **Actions**. The public **Data merge** request body in the Illustrator API expects **CSV** for variable data. You can still follow HelpX for XML when creating or saving variable libraries inside Illustrator; for the API job itself, supply a CSV file that matches your template and the [auto-mapping rules](../getting-started/usage/index.md).
-
----
+Follow the Adobe product documentation on HelpX collected here for the latest guidance in each of the use cases below:
 
 ## Merge data
 
@@ -50,8 +35,6 @@ Adobe HelpX explains how to merge data efficiently to create dynamic, personaliz
 
 [Merge data in Adobe Illustrator (HelpX)](https://helpx.adobe.com/illustrator/desktop/automate-visualize-data/automate-actions/merge-data.html)
 
----
-
 ## Set up data source files
 
 **When you need this.** Follow this when you are authoring or validating comma-delimited (`.csv`) or XML source files whose fields must align with variables and naming rules—especially the first row and special prefixes that tell Illustrator how to treat each column.
@@ -59,8 +42,6 @@ Adobe HelpX explains how to merge data efficiently to create dynamic, personaliz
 Data source files should be saved as comma-delimited (`.csv`) or XML. For CSV, records are separated by paragraph breaks and fields by commas or tabs; the file can include text or paths that point to images. In the first row, use an at sign (`@`) before a field name for text or image paths, a percent sign (`%`) for graphs, and a number sign (`#`) for visibility, with `true` or `false` per field as needed. Field names should not contain spaces (for example, `Company_Name` instead of `Company Name`). Save from supported spreadsheet apps in the formats HelpX lists; some CSV variants (such as Mac Comma Separated) are not supported for data merge. For XML, HelpX covers defining variables, using the **Data Set** control in the **Variables** panel, saving and loading variable libraries, and editing the XML in a text editor.
 
 [Set up data source files in Adobe Illustrator (HelpX)](https://helpx.adobe.com/illustrator/desktop/automate-visualize-data/automate-actions/set-up-data-source-files.html)
-
----
 
 ## Import data source files
 
@@ -70,8 +51,6 @@ You can import a data source in the **Variables** panel and bind variables to yo
 
 [Import CSV or XML data source files (HelpX)](https://helpx.adobe.com/illustrator/desktop/automate-visualize-data/automate-actions/import-data-source-files.html)
 
----
-
 ## Variable panel overview
 
 **When you need this.** Read this when you want a single overview of how the **Variables** panel ties together data sources, variables, and multiple artwork variations from CSV or XML before you rely on the same structure in an API-driven merge.
@@ -79,8 +58,6 @@ You can import a data source in the **Variables** panel and bind variables to yo
 HelpX walks through merging a design with CSV or XML data and creating multiple artwork variations from the **Variables** panel, including working with data sets and preview behavior. Use it alongside the sections above and below when you are new to variables-driven layouts.
 
 [Variable panel overview (HelpX)](https://helpx.adobe.com/illustrator/desktop/automate-visualize-data/automate-actions/variable-panel-overview.html)
-
----
 
 ## Work with variables
 
@@ -90,8 +67,6 @@ You can edit a variable’s name or type, unbind a variable from its object, or 
 
 [Work with variables in Illustrator (HelpX)](https://helpx.adobe.com/illustrator/desktop/automate-visualize-data/automate-actions/work-with-variables.html)
 
----
-
 ## Edit dynamic objects
 
 **When you need this.** Use this when you need to change bound content, select all objects tied to variables, or ensure object naming is valid for XML or SVG export paths alongside your API template.
@@ -99,8 +74,6 @@ You can edit a variable’s name or type, unbind a variable from its object, or 
 Dynamic object names appear in the **Variables** panel as in the **Layers** panel. For SVG workflows, names must follow XML naming rules; Illustrator can assign valid XML IDs. HelpX explains setting **XML ID** in preferences and how to select bound objects from the **Variables** panel menu, then edit text on the artboard, replace linked images, edit graph data, or change visibility in the **Layers** panel for visibility variables.
 
 [Edit dynamic objects in Adobe Illustrator (HelpX)](https://helpx.adobe.com/illustrator/desktop/automate-visualize-data/automate-actions/edit-dynamic-objects.html)
-
----
 
 ## Related topics
 
