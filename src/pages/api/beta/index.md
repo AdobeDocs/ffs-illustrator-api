@@ -1,6 +1,6 @@
 ---
 title: Firefly Illustrator API Reference (Public Beta)
-description: Firefly Illustrator API public beta reference (Custom Scripts, vectorize).
+description: Firefly Illustrator API public beta reference (Custom Scripts, Vectorize).
 layout: none
 keywords:
   - firefly

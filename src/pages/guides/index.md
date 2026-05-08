@@ -2,7 +2,7 @@
 title: Guides - Firefly Services Illustrator API
 description: >-
   In-depth guides for the Illustrator API, including custom script bundles,
-  vectorize jobs, capability metadata, and integration patterns.
+  Vectorize jobs, capability metadata, and integration patterns.
 hideBreadcrumbNav: true
 keywords:
   - firefly
@@ -24,7 +24,7 @@ Use these guides when you need step-by-step detail beyond the [API reference](..
 
 Learn how to package and run custom script bundles with the Custom Scripts API: ZIP layout, `manifest.json`, `script.jsx` entry points, and how capability names map to execution URLs. Pair this guide with the [Custom Scripts API (public beta)](../api/beta/index.md) reference for request and response shapes.
 
-### [vectorize guide](image-vectorize/index.md)
+### [Vectorize guide](image-vectorize/index.md)
 
 Run raster-to-vector (Image Trace) jobs: `input` (`source.url` + `mediaType`), `settings` options, polling `GET /v1/status/{jobId}`, and downloading SVG output. Use with the [public beta API reference](../api/beta/index.md); align optional trace fields with the Vectorize service UAP.
 

@@ -27,7 +27,7 @@
             "description": "Submit and execute custom scripts for Illustrator automation. These services support comprehensive scripting capabilities for document manipulation and processing."
         },
         {
-            "name": "vectorize",
+            "name": "Vectorize",
             "description": "Convert raster artwork to vector format using Illustrator image trace / vectorization. Jobs run asynchronously; poll job status for presigned output URL."
         }
     ],
@@ -1008,10 +1008,10 @@
         "/v1/images/vectorize": {
             "post": {
                 "tags": [
-                    "vectorize"
+                    "Vectorize"
                 ],
                 "operationId": "submitImageVectorizeJob",
-                "summary": "Submit a vectorize job",
+                "summary": "Submit a Vectorize job",
                 "description": "Submits a raster-to-vector (Image Trace) job. The request format mirrors other Illustrator async APIs by using `input` and `settings`. Supported inputs are PNG and JPEG. Poll **Retrieve job status** (`GET /v1/status/{jobId}`) using the `jobId` or `statusUrl` from the response. On success, `outputs` contains presigned URLs for generated SVG output.",
                 "x-ffs-async-job": true,
                 "x-ffs-job-status-fetcher": "vectorizeJobStatus",

@@ -55,19 +55,19 @@ These beta services include:
 You find more information about the Custom Scripts (beta) service in the [Custom Scripts API (public beta)](api/beta/index.md) reference.
 You find more information about how to write and execute custom scripts in the [Custom Script Guide](guides/custom-scripts/index.md).
 
-### What's the Illustrator vectorize (beta) service?
+### What's the Illustrator Vectorize (beta) service?
 
 <inlinealert variant="info" slots="heading, text"/>
 
  Public beta
 
-The vectorize service is in public beta. It is available to all users, but APIs in this section are subject to change.
+The Vectorize service is in public beta. It is available to all users, but APIs in this section are subject to change.
 
-The vectorize workflow lets you submit raster images and retrieve vectorized Illustrator documents without packaging a custom script. You provide presigned URLs for inputs, poll `GET /v1/status/{jobId}`, and download outputs from presigned URLs when the job completes.
+The Vectorize workflow lets you submit raster images and retrieve vectorized Illustrator documents without packaging a custom script. You provide presigned URLs for inputs, poll `GET /v1/status/{jobId}`, and download outputs from presigned URLs when the job completes.
 
-- [Submit a vectorize job](api/beta/index.md#operation/submitImageVectorizeJob)
+- [Submit a Vectorize job](api/beta/index.md#operation/submitImageVectorizeJob)
 
-Read the [vectorize API (public beta)](api/beta/index.md) reference for request and response shapes, and the [vectorize guide](guides/image-vectorize/index.md) for the end-to-end workflow.
+Read the [Vectorize API (public beta)](api/beta/index.md) reference for request and response shapes, and the [Vectorize guide](guides/image-vectorize/index.md) for the end-to-end workflow.
 
 ## Discover
 
@@ -87,11 +87,11 @@ Try the API with Swagger UI. Explore, make calls, with full endpoint description
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Custom Scripts and vectorize API (public beta)
+### Custom Scripts and Vectorize API (public beta)
 
 [**Try the Illustrator public beta API**](api/beta/index.md)
 
-Explore the public beta reference for Custom Scripts and vectorize.
+Explore the public beta reference for Custom Scripts and Vectorize.
 
 <Resources slots="heading, links"/>
 
