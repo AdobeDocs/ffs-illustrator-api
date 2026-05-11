@@ -89,6 +89,6 @@ The HelpX topic explains:
 
 ## Related topics
 
-- [**API reference**](../api/index.md) — Data merge and job status endpoints.
-- [**Technical usage notes**](../getting-started/usage/index.md) — Data Merge limits and auto-mapping from CSV headers to layer names.
-- [**Authentication**](../getting-started/index.md) — Credentials and access tokens for Illustrator API.
+- [**API reference**](../../api/index.md) — Data merge and job status endpoints.
+- [**Technical usage notes**](../../getting-started/usage/index.md) — Data Merge limits and auto-mapping from CSV headers to layer names.
+- [**Authentication**](../../getting-started/index.md) — Credentials and access tokens for Illustrator API.
