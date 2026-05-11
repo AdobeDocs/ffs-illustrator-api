@@ -49,7 +49,7 @@ my-capability.zip
 
 ## Required input in a custom script
 
-The system, by default, sends a string-type argument named `"params"`, which needs to be parsed inside the script to retrieve the values of the attributes.
+The system, by default, sends a string-type argument named `"params"`, which needs to be parsed inside the script to retrieve its attribute values.
 
 - **params** - Information about what to do with the reserved input params.
 
@@ -89,7 +89,7 @@ var arg2 = paramsMap.outputFolderPath;
 // Some processing
 ```
 
-All `"params"` passed in the request can be fetched using `"paramsMap".<paramKey>` in the script.
+All parameters passed in `"params"` can be fetched using `"paramsMap".<paramKey>` in the script.
 
 ### Input examples
 
@@ -149,26 +149,26 @@ C:\\basefolder\\assets
 }
 ```
 
-Any parameter ending with `"FolderPath"` will be processed and converted to an absolute path, as done with `"assetDataFolderPath"`.
+Any parameter ending with `"FolderPath"` will be processed and converted to an absolute path, as shown with `"assetDataFolderPath"`.
 
 
 **Sample code that takes the input (from above)**
 
 ```javascript
 var inputFile = new File(paramsMap.targetDocument);
-var outputFolder = paramsMap.outputFolderPath;
 var jpegDataPath = paramsMap.assetDataFolderPath + "/jpegData/";
 var extraParam = paramsMap.someParam;
 
 if (!inputFile.exists) {
     throw new Error('Input file not found: ' + inputFile.fsName);
 }
-someProcessing(extraParam, jpegDataPath);
 
 var doc = app.open(inputFile);
-var outputPath = paramsMap.outputPath + "/result_output.ai";
-var outputFile = new File(outputPath);
+var outputFilePath = paramsMap.outputFolderPath + "/result_output.ai";
 
+someProcessing(extraParam, jpegDataPath);
+
+var outputFile = new File(outputFilePath);
 doc.exportAsFormat(ExportFileType.ET_AI, outputFile);
 doc.close(SaveOptions.DONOTSAVECHANGES);
 ```
@@ -178,9 +178,12 @@ The document should be closed without saving changes using `doc.close(SaveOption
 
 Assets specified in the execution request are downloaded on the local file system using the specified identifiers. The custom script should be authored to work against locally downloaded assets.
 
-The execution request includes a JSON dictionary as a parameter. The custom script defines the parameters and they are passed as-is to it during execution.
+The execution request includes a JSON dictionary as a parameter. All parameters are sent to the script during execution.
 
 The generated output should be exported in `outputFolderPath` via the script. Exported assets will be uploaded to the target location.
+
+<InlineAlert variant="warning" slots="text"/>
+The script **should not** have any `UI` code or invocation of dialogs/popups like `alert()`.
 
 For full API details, see the [Custom Scripts API Reference](https://developer-stage.adobe.com/firefly-services/docs/illustrator/api/#tag/Custom-Scripts).
 
@@ -254,5 +257,5 @@ When a custom script execution fails, the status API returns a response with `"s
 
 Logging can be important for debugging your own scripts and to keep track of decisions made during a script execution.
 
-You can log data to a `<debug>.log` file, which will be created in `outputFolderPath` via the script.
+You can log data to a `<debugFile>.log` file in `outputFolderPath`. The file will be created by the script.
 Even if the execution fails, these logs will be uploaded and a link will be provided in the response.
