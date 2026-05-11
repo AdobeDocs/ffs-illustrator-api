@@ -26,7 +26,7 @@ Learn how to package and run custom script bundles with the Custom Scripts API: 
 
 ### [Vectorize guide](image-vectorize/index.md)
 
-Run raster-to-vector (Image Trace) jobs: `input` (`source.url` + `mediaType`), `settings` options, polling `GET /v1/status/{jobId}`, and downloading SVG output. Use with the [public beta API reference](../api/beta/index.md); align optional trace fields with the Vectorize service UAP.
+Run raster-to-vector (Image Trace) jobs: `input` (`source.url` + `mediaType`), optional `settings.preset`, polling `GET /v1/status/{jobId}`, and downloading SVG output. Pair with the [public beta API reference](../api/beta/index.md).
 
 ## Related topics
 

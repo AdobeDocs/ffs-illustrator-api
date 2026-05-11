@@ -69,7 +69,7 @@ The `source` attribute is where the asset is downloaded from. The `destination` 
 
 ## About Vectorize (beta)
 
-The **Vectorize** public beta service turns raster artwork (PNG or JPEG) into SVG output using server-side Image Trace-style processing. You submit a job with an **`input`** object (`source.url` + `mediaType`) and optional **`settings`** fields (`preset`, `generateSvg`, `autoSettings`). The job runs asynchronously; poll **`GET /v1/status/{jobId}`** for completion and read presigned download URLs from the response when the job succeeds.
+The **Vectorize** public beta service turns raster artwork (PNG or JPEG) into **SVG-only** output (`image/svg+xml`) using server-side Image Trace-style processing. Other export formats are not returned. You submit a job with an **`input`** object (`source.url` + `mediaType`) and optional **`settings.preset`** (`enhanced_general` or `high_fidelity_photo`). The job runs asynchronously; poll **`GET /v1/status/{jobId}`** for completion and read presigned download URLs from the response when the job succeeds.
 
 For a step-by-step guide, see [Vectorize guide](../../guides/image-vectorize/index.md).
 

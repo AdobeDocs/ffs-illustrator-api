@@ -35,7 +35,7 @@ If you are new to pre-signed URLs and job polling, read [Key concepts](/getting-
 ## Workflow
 
 1. **Upload** your raster file to your storage and obtain a **presigned GET URL** (or equivalent temporary download URL supported by the platform).
-2. **Submit** `POST .../v1/images/vectorize` with `input` (source URL + `mediaType`) and `settings` fields. See the [Vectorize API (public beta)](/api/beta/index.md) reference for the request schema.
+2. **Submit** `POST .../v1/images/vectorize` with `input` (source URL + `mediaType`) and, if needed, optional `settings.preset`. See the [Vectorize API (public beta)](/api/beta/index.md) reference for the request schema.
 3. **Poll** `GET .../v1/status/{jobId}` using the `jobId` or `statusUrl` from the submit response until `status` is `succeeded` or `failed`.
 4. **Download** SVG output from the presigned URLs in the `outputs` array when the job succeeds.
 
@@ -48,7 +48,7 @@ Use the following request shape:
 | `input` | Yes | Input file details. |
 | `input.source.url` | Yes | Pre-signed URL of the input file. |
 | `input.mediaType` | Yes | Media type of the input file. Allowed values: `image/png`, `image/jpeg`. |
-| `settings` | No | Vectorization options and tuning controls. |
+| `settings` | No | Optional object containing only `preset` (see below). |
 
 ## Example request body
 
@@ -59,9 +59,7 @@ Use the following request shape:
     "mediaType": "image/png"
   },
   "settings": {
-    "preset": "auto",
-    "generateSvg": true,
-    "autoSettings": true
+    "preset": "enhanced_general"
   }
 }
 ```
@@ -70,24 +68,7 @@ Use the following request shape:
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `settings.preset` | string | Optional vectorization preset name (case-insensitive). If omitted, preset is auto-selected from image complexity. Invalid values return 400. |
-| `settings.generateSvg` | boolean | When true, generate SVG output (`image/svg+xml`). If omitted, defaults to true. |
-| `settings.autoSettings` | boolean | When true, choose settings automatically and skip applying most manual tuning fields in the legacy path. If omitted, defaults to true. |
-| `settings.colorMode` | string | Color mode: `color`, `grayscale`, or `black_and_white`. |
-| `settings.colorPaletteType` | string | For color mode: `automatic`, `limited`, or `fulltone`. |
-| `settings.numberOfColors` | integer | Max colors when `colorMode` is `color` and `colorPaletteType` is `limited`. Minimum 1. |
-| `settings.colorFidelity` | number | Color accuracy percentage. Range: 0-100. |
-| `settings.grayscale` | number | Grayscale accuracy percentage. Range: 0-100. |
-| `settings.blackAndWhiteThreshold` | integer | Pixels darker than this become black in `black_and_white` mode. Range: 1-255. |
-| `settings.pathFidelity` | number | Path fitting tightness percentage. Range: 0-100. |
-| `settings.cornerFidelity` | number | Corner emphasis percentage. Range: 0-100. |
-| `settings.noiseFidelity` | integer | Noise reduction strength. Range: 1-100. |
-| `settings.overlappingPaths` | boolean | `true` for stacked paths; `false` for cut-out (abutting) paths. |
-| `settings.filledPaths` | boolean | When true, produce filled regions. |
-| `settings.strokedPaths` | boolean | When true, produce stroked paths. |
-| `settings.maxStrokeWeight` | integer | Max stroke width in pixels when stroked paths are enabled. Minimum 1. |
-| `settings.snapCurvesToLines` | boolean | Replace slightly curved segments with straight lines. |
-| `settings.ignoreWhite` | boolean | Remove white fills. |
+| `settings.preset` | string | Optional. One of: **`enhanced_general`** — vector-looking generated output; **`high_fidelity_photo`** — photorealistic tracing. Omit to use the service default. Any other value returns 400. |
 
 ## Status and outputs
 

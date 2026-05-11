@@ -1044,9 +1044,7 @@
                                     "mediaType": "image/png"
                                 },
                                 "settings": {
-                                    "preset": "auto",
-                                    "generateSvg": true,
-                                    "autoSettings": true
+                                    "preset": "enhanced_general"
                                 }
                             }
                         }
@@ -1893,7 +1891,7 @@
                         ]
                     },
                     "settings": {
-                        "description": "Settings that control vectorization behavior and SVG generation.",
+                        "description": "Optional vectorization preset (`preset` only).",
                         "allOf": [
                             {
                                 "$ref": "#/components/schemas/ImageVectorizeSettings"
@@ -1953,110 +1951,17 @@
             },
             "ImageVectorizeSettings": {
                 "type": "object",
+                "description": "Vectorization preset. Only `preset` is supported.",
+                "additionalProperties": false,
                 "properties": {
                     "preset": {
                         "type": "string",
-                        "description": "Optional vectorization preset name (case-insensitive). If omitted, preset is auto-selected from image complexity. Invalid values return 400.",
-                        "example": "auto"
-                    },
-                    "generateSvg": {
-                        "type": "boolean",
-                        "description": "When true, generate SVG output (`image/svg+xml`). If omitted, defaults to true.",
-                        "default": true
-                    },
-                    "autoSettings": {
-                        "type": "boolean",
-                        "description": "When true, choose settings automatically (for example color count from image) and skip applying most manual tuning fields in the legacy path. If omitted, defaults to true.",
-                        "default": true
-                    },
-                    "colorMode": {
-                        "type": "string",
-                        "description": "Color mode. Supported values: `color`, `grayscale`, `black_and_white`.",
-                        "example": "color"
-                    },
-                    "colorPaletteType": {
-                        "type": "string",
-                        "description": "Palette behavior for color mode. Supported values: `automatic`, `limited`, `fulltone`.",
-                        "example": "automatic"
-                    },
-                    "numberOfColors": {
-                        "type": "integer",
-                        "description": "Max colors when `colorMode` is `color` and `colorPaletteType` is `limited`. Minimum 1.",
-                        "minimum": 1,
-                        "example": 8
-                    },
-                    "colorFidelity": {
-                        "type": "number",
-                        "description": "Color accuracy percentage when in color mode with automatic or fulltone palette.",
-                        "minimum": 0,
-                        "maximum": 100,
-                        "example": 50
-                    },
-                    "grayscale": {
-                        "type": "number",
-                        "description": "Grayscale accuracy percentage when `colorMode` is `grayscale`.",
-                        "minimum": 0,
-                        "maximum": 100,
-                        "example": 75
-                    },
-                    "blackAndWhiteThreshold": {
-                        "type": "integer",
-                        "description": "Pixels darker than this become black when `colorMode` is `black_and_white`.",
-                        "minimum": 1,
-                        "maximum": 255,
-                        "example": 128
-                    },
-                    "pathFidelity": {
-                        "type": "number",
-                        "description": "Path fitting tightness percentage.",
-                        "minimum": 0,
-                        "maximum": 100,
-                        "example": 50
-                    },
-                    "cornerFidelity": {
-                        "type": "number",
-                        "description": "Corner emphasis percentage.",
-                        "minimum": 0,
-                        "maximum": 100,
-                        "example": 50
-                    },
-                    "noiseFidelity": {
-                        "type": "integer",
-                        "description": "Noise reduction strength. Larger values ignore smaller regions.",
-                        "minimum": 1,
-                        "maximum": 100,
-                        "example": 10
-                    },
-                    "overlappingPaths": {
-                        "type": "boolean",
-                        "description": "When true, use stacked paths; when false, use cut-out (abutting) paths.",
-                        "example": true
-                    },
-                    "filledPaths": {
-                        "type": "boolean",
-                        "description": "When true, produce filled regions.",
-                        "example": true
-                    },
-                    "strokedPaths": {
-                        "type": "boolean",
-                        "description": "When true, produce stroked paths.",
-                        "example": false
-                    },
-                    "maxStrokeWeight": {
-                        "type": "integer",
-                        "description": "Maximum stroke width in pixels when stroked paths are enabled.",
-                        "minimum": 1,
-                        "example": 4
-                    },
-                    "snapCurvesToLines": {
-                        "type": "boolean",
-                        "description": "When true, replace slightly curved segments with straight lines.",
-                        "example": false
-                    },
-                    "ignoreWhite": {
-                        "type": "boolean",
-                        "description": "When true, remove white fills.",
-                        "example": true
+                        "description": "Vectorization preset. `enhanced_general` favors a clean, vector-style look. `high_fidelity_photo` favors photorealistic tracing. Omit to use the service default. Other values return 400.",
+                        "enum": [
+                            "enhanced_general",
+                            "high_fidelity_photo"
+                        ],
+                        "example": "enhanced_general"
                     }
                 }
             },
