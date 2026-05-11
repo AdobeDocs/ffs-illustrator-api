@@ -1397,7 +1397,7 @@
         "/v1/status/{jobId}": {
             "get": {
                 "tags": [
-                    "vectorize"
+                    "Vectorize"
                 ],
                 "operationId": "vectorizeJobStatus",
                 "summary": "Retrieve job status",
