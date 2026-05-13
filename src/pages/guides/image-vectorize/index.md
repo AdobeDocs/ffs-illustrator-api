@@ -35,8 +35,8 @@ If you are new to pre-signed URLs and job polling, read [Key concepts](/getting-
 ## Workflow
 
 1. **Upload** your raster file to your storage and obtain a **presigned GET URL** (or equivalent temporary download URL supported by the platform).
-2. **Submit** `POST .../v1/images/vectorize` with `input` (source URL + `mediaType`) and, if needed, optional `settings.preset`. See the [Vectorize API (public beta)](/api/beta/index.md) reference for the request schema.
-3. **Poll** `GET .../v1/status/{jobId}` using the `jobId` or `statusUrl` from the submit response until `status` is `succeeded` or `failed`.
+2. **Submit** `POST .../beta/images/vectorize` with `input` (source URL + `mediaType`) and, if needed, optional `settings.preset`. See the [Vectorize API (public beta)](/api/beta/index.md) reference for the request schema.
+3. **Poll** `GET .../beta/status/{jobId}` using the `jobId` or `statusUrl` from the submit response until `status` is `succeeded` or `failed`.
 4. **Download** SVG output from the presigned URLs in the `outputs` array when the job succeeds.
 
 ## Required input for Vectorize
@@ -72,14 +72,14 @@ Use the following request shape:
 
 ## Status and outputs
 
-Polling uses the Vectorize status operation (`GET /v1/status/{jobId}`). When `status` is `succeeded`, use the presigned URLs in `outputs` to download generated SVG files. Error messages and HTTP status codes follow the same error schema as other beta operations in this reference.
+Polling uses the Vectorize status operation (`GET /beta/status/{jobId}`). When `status` is `succeeded`, use the presigned URLs in `outputs` to download generated SVG files. Error messages and HTTP status codes follow the same error schema as other beta operations in this reference.
 
 ### Submit response (202 Accepted)
 
 ```json
 {
   "jobId": "f7da0875-7919-486d-b915-7258c89f09e0",
-  "statusUrl": "<url>/v1/status/f7da0875-7919-486d-b915-7258c89f09e0"
+  "statusUrl": "<url>/beta/status/f7da0875-7919-486d-b915-7258c89f09e0"
 }
 ```
 
