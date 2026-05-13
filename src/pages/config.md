@@ -33,3 +33,4 @@
     - Guides header
     - [Using Custom Scripts (beta)](/guides/custom-scripts/index.md)
     - [Vectorize (beta)](/guides/image-vectorize/index.md)
+    - [Template setup for Data Merge](/guides/template-setup/index.md)
