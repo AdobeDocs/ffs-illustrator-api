@@ -1,8 +1,11 @@
+# .gitignore
+
 
 # OS and IDE generated files #
 ##############################
 .DS_Store
 .vscode
+.cursor
 .history
 .idea
 .editorconfig
@@ -45,6 +48,6 @@ local-test.yml
 .yalc
 yalc.lock
 
-#txt
+# Added by update-bot
 linter-output.txt
 linter-report.txt
