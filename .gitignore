@@ -3,7 +3,6 @@
 ##############################
 .DS_Store
 .vscode
-.cursor
 .history
 .idea
 .editorconfig
@@ -45,3 +44,7 @@ local-test.yml
 # yalc
 .yalc
 yalc.lock
+
+#txt
+linter-output.txt
+linter-report.txt
