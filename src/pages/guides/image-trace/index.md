@@ -1,45 +1,44 @@
 ---
-title: Vectorize Guide for Illustrator API
+title: Image Trace Guide for Illustrator API
 description: >-
-  Guide to running Vectorize jobs with the Illustrator API for raster-to-vector
+  Guide to running Image Trace jobs with the Illustrator API for raster-to-vector
   conversion.
 keywords:
   - Adobe Illustrator API
   - Illustrator automation
   - image trace
-  - vectorize
   - REST API
   - cloud services
   - raster to vector
 og:
-  title: Vectorize Guide for Illustrator API
+  title: Image Trace Guide for Illustrator API
   description: >-
-    Guide to running Vectorize jobs with the Illustrator API for raster-to-vector
+    Guide to running Image Trace jobs with the Illustrator API for raster-to-vector
     conversion.
 twitter:
   card: summary
-  title: Vectorize Guide for Illustrator API
+  title: Image Trace Guide for Illustrator API
   description: >-
-    Guide to running Vectorize jobs with the Illustrator API for raster-to-vector
+    Guide to running Image Trace jobs with the Illustrator API for raster-to-vector
     conversion.
 ---
 
-# Vectorize Guide
+# Image Trace Guide
 
-Use this document to submit and monitor Vectorize jobs with the Illustrator API.
+Use this document to submit and monitor Image Trace jobs with the Illustrator API.
 
-Illustrator API supports Vectorize workflows for raster-to-vector conversion (Image Trace style). The service accepts PNG/JPEG input, runs vectorization in Illustrator, and returns presigned URLs for SVG output when the job succeeds.
+Illustrator API supports Image Trace workflows for raster-to-vector conversion. The service accepts PNG/JPEG input, runs image tracing in Illustrator, and returns presigned URLs for SVG output when the job succeeds.
 
 If you are new to pre-signed URLs and job polling, read [Key concepts](/getting-started/concepts/index.md) first.
 
 ## Workflow
 
 1. **Upload** your raster file to your storage and obtain a **presigned GET URL** (or equivalent temporary download URL supported by the platform).
-2. **Submit** `POST .../beta/images/vectorize` with `input` (source URL + `mediaType`) and, if needed, optional `settings.preset`. See the [Vectorize API (public beta)](/api/beta/index.md) reference for the request schema.
+2. **Submit** `POST .../beta/images/image-trace` with `input` (source URL + `mediaType`) and, if needed, optional `settings.preset`. See the [Image Trace API (public beta)](/api/beta/index.md) reference for the request schema.
 3. **Poll** `GET .../beta/status/{jobId}` using the `jobId` or `statusUrl` from the submit response until `status` is `succeeded` or `failed`.
 4. **Download** SVG output from the presigned URLs in the `outputs` array when the job succeeds.
 
-## Required input for Vectorize
+## Required input for Image Trace
 
 Use the following request shape:
 
@@ -72,7 +71,7 @@ Use the following request shape:
 
 ## Status and outputs
 
-Polling uses the Vectorize status operation (`GET /beta/status/{jobId}`). When `status` is `succeeded`, use the presigned URLs in `outputs` to download generated SVG files. Error messages and HTTP status codes follow the same error schema as other beta operations in this reference.
+Polling uses the Image Trace status operation (`GET /beta/status/{jobId}`). When `status` is `succeeded`, use the presigned URLs in `outputs` to download generated SVG files. Error messages and HTTP status codes follow the same error schema as other beta operations in this reference.
 
 ### Submit response (202 Accepted)
 
@@ -113,5 +112,5 @@ Polling uses the Vectorize status operation (`GET /beta/status/{jobId}`). When `
 
 ## Related links
 
-- [**Vectorize API (public beta)**](/api/beta/index.md) — OpenAPI reference (`submitImageVectorizeJob`, `vectorizeJobStatus`).
+- [**Image Trace API (public beta)**](/api/beta/index.md) — OpenAPI reference (`submitImageTraceJob`, `imageTraceJobStatus`).
 - [**Custom Script Guide**](/guides/custom-scripts/index.md) — Another beta workflow that also uses async job polling.

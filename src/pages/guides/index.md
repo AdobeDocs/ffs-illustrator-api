@@ -1,6 +1,6 @@
 ---
 title: Guides - Firefly Services Illustrator API
-description: In-depth guides for the Illustrator API, including custom script bundles, Vectorize jobs, Data Merge template setup, capability metadata, and integration patterns.
+description: In-depth guides for the Illustrator API, including custom script bundles, Image Trace jobs, Data Merge template setup, capability metadata, and integration patterns.
 hideBreadcrumbNav: true
 keywords:
   - firefly
@@ -8,7 +8,7 @@ keywords:
   - api
   - guides
   - custom scripts
-  - vectorize
+  - image trace
   - data merge
   - documentation
 ---
@@ -23,7 +23,7 @@ Use these guides when you need step-by-step detail beyond the [API reference](..
 
 Learn how to package and run custom script bundles with the Custom Scripts API: ZIP layout, `manifest.json`, `script.jsx` entry points, and how capability names map to execution URLs. Pair this guide with the [Custom Scripts API (public beta)](../api/beta/index.md) reference for request and response shapes.
 
-### [Vectorize guide](image-vectorize/index.md)
+### [Image Trace guide](image-trace/index.md)
 
 Run raster-to-vector (Image Trace) jobs: `input` (`source.url` + `mediaType`), optional `settings.preset`, polling `GET /beta/status/{jobId}`, and downloading SVG output. Pair with the [public beta API reference](../api/beta/index.md).
 ### [Template setup for Data Merge](template-setup/index.md)

@@ -55,19 +55,19 @@ These beta services include:
 You find more information about the Custom Scripts (beta) service in the [Custom Scripts API (public beta)](api/beta/index.md) reference.
 You find more information about how to write and execute custom scripts in the [Custom Script Guide](guides/custom-scripts/index.md).
 
-### What's the Illustrator Vectorize (beta) service?
+### What's the Illustrator Image Trace (beta) service?
 
 <inlinealert variant="info" slots="heading, text"/>
 
  Public beta
 
-The Vectorize service is in public beta. It is available to all users, but APIs in this section are subject to change.
+The Image Trace service is in public beta. It is available to all users, but APIs in this section are subject to change.
 
-The Vectorize workflow lets you submit raster images (PNG or JPEG) and retrieve **SVG** output only (`image/svg+xml`). You provide presigned URLs for inputs, poll `GET /beta/status/{jobId}`, and download the SVG from the presigned URL when the job completes. Other output formats are not returned.
+The Image Trace workflow lets you submit raster images (PNG or JPEG) and retrieve **SVG** output only (`image/svg+xml`). You provide presigned URLs for inputs, poll `GET /beta/status/{jobId}`, and download the SVG from the presigned URL when the job completes. Other output formats are not returned.
 
-- [Submit a Vectorize job](api/beta/index.md#operation/submitImageVectorizeJob)
+- [Submit a Image Trace job](api/beta/index.md#operation/submitImageTraceJob)
 
-Read the [Vectorize API (public beta)](api/beta/index.md) reference for request and response shapes, and the [Vectorize guide](guides/image-vectorize/index.md) for the end-to-end workflow.
+Read the [Image Trace API (public beta)](api/beta/index.md) reference for request and response shapes, and the [Image Trace guide](guides/image-trace/index.md) for the end-to-end workflow.
 
 ## Discover
 
@@ -87,11 +87,11 @@ Try the API with Swagger UI. Explore, make calls, with full endpoint description
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Custom Scripts and Vectorize API (public beta)
+### Custom Scripts and Image Trace API (public beta)
 
 [**Try the Illustrator public beta API**](api/beta/index.md)
 
-Explore the public beta reference for Custom Scripts and Vectorize.
+Explore the public beta reference for Custom Scripts and Image Trace.
 
 <Resources slots="heading, links"/>
 
