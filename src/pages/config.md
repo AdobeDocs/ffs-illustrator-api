@@ -32,4 +32,5 @@
     - [Technical usage notes](/getting-started/usage/index.md)
     - Guides header
     - [Using Custom Scripts (beta)](/guides/custom-scripts/index.md)
+    - [Image Trace (beta)](/guides/image-trace/index.md)
     - [Template setup for Data Merge](/guides/template-setup/index.md)
