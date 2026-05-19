@@ -1017,7 +1017,7 @@
                 "x-ffs-job-status-fetcher": "vectorizeJobStatus",
                 "servers": [
                     {
-                        "url": "https://illustrator-api.adobe.io/",
+                        "url": "https://illustrator-api.adobe.io",
                         "description": "Beta production"
                     }
                 ],
@@ -1406,7 +1406,7 @@
                 "x-ffs-job-name": "VectorizeAsyncJob",
                 "servers": [
                     {
-                        "url": "https://illustrator-api.adobe.io/",
+                        "url": "https://illustrator-api.adobe.io",
                         "description": "Beta production"
                     }
                 ],
