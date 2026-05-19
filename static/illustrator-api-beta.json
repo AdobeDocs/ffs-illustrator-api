@@ -1012,12 +1012,12 @@
                 ],
                 "operationId": "submitImageVectorizeJob",
                 "summary": "Submit a Vectorize job",
-                "description": "Submits a raster-to-vector (Image Trace) job. The request format mirrors other Illustrator async APIs by using `input` and `settings`. Supported inputs are PNG and JPEG. Poll **Retrieve job status** (`GET /beta/status/{jobId}`) using the `jobId` or `statusUrl` from the response. On success, `outputs` contains presigned URLs for generated SVG output.",
+                "description": "Submits a raster-to-vector (Image Trace) job. The request format mirrors other Illustrator async APIs by using `input` and `settings`. Supported inputs are PNG and JPEG. Poll **Retrieve job status** (`GET /v1/status/{jobId}`) using the `jobId` or `statusUrl` from the response. On success, `outputs` contains presigned URLs for generated SVG output.",
                 "x-ffs-async-job": true,
                 "x-ffs-job-status-fetcher": "vectorizeJobStatus",
                 "servers": [
                     {
-                        "url": "https://illustrator.adobe.io/beta",
+                        "url": "https://illustrator-api.adobe.io",
                         "description": "Beta production"
                     }
                 ],
@@ -1116,7 +1116,7 @@
                                 },
                                 "example": {
                                     "jobId": "<jobId>",
-                                    "statusUrl": "https://illustrator.adobe.io/beta/status/<jobId>"
+                                    "statusUrl": "https://illustrator-api.adobe.io/v1/status/<jobId>"
                                 }
                             }
                         }
@@ -1394,7 +1394,7 @@
                 }
             }
         },
-        "/beta/status/{jobId}": {
+        "/v1/status/{jobId}": {
             "get": {
                 "tags": [
                     "Vectorize"
@@ -1406,7 +1406,7 @@
                 "x-ffs-job-name": "VectorizeAsyncJob",
                 "servers": [
                     {
-                        "url": "https://illustrator.adobe.io/beta",
+                        "url": "https://illustrator-api.adobe.io",
                         "description": "Beta production"
                     }
                 ],
@@ -1669,12 +1669,12 @@
                 "properties": {
                     "jobId": {
                         "type": "string",
-                        "description": "Job identifier. Use with **Retrieve job status** on `GET /beta/status/{jobId}` for vectorize jobs.",
+                        "description": "Job identifier. Use with **Retrieve job status** on `GET /v1/status/{jobId}` for vectorize jobs.",
                         "example": "string"
                     },
                     "statusUrl": {
                         "type": "string",
-                        "description": "URL to poll for vectorize job status (`/beta/status/{jobId}`).",
+                        "description": "URL to poll for vectorize job status (`/v1/status/{jobId}`).",
                         "example": "string"
                     }
                 },
