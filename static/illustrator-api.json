@@ -1492,7 +1492,7 @@
                     "statusUrl": {
                         "type": "string",
                         "description": "The status URL.",
-                        "example": "https://illustrator-api-beta.adobe.io/v1/status/f246bc8a-45ef-4cdc-8217-6c1ab74c5dc4"
+                        "example": "https://illustrator-api-beta.adobe.io/beta/status/f246bc8a-45ef-4cdc-8217-6c1ab74c5dc4"
                     }
                 },
                 "required": [
