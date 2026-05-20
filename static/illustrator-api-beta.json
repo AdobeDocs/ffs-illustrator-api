@@ -1008,7 +1008,7 @@
         "/beta/images/vectorize": {
             "post": {
                 "tags": [
-                    "Vectorize"
+                    "Image Trace"
                 ],
                 "operationId": "submitImageVectorizeJob",
                 "summary": "Submit an Image Trace job",
@@ -1397,7 +1397,7 @@
         "/v1/status/{jobId}": {
             "get": {
                 "tags": [
-                    "Vectorize"
+                    "Image Trace"
                 ],
                 "operationId": "vectorizeJobStatus",
                 "summary": "Retrieve job status",
