@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Illustrator API (public beta) - Firefly Services",
-        "description": "This is the Illustrator API public beta reference documentation for the Custom Scripts and vectorize endpoints. APIs in this document are subject to change.",
+        "description": "This is the Illustrator API public beta reference documentation for the Custom Scripts and Image Trace endpoints. APIs in this document are subject to change.",
         "version": "1.0.0-beta",
         "license": {
             "name": "Adobe Creative API License",
@@ -27,7 +27,7 @@
             "description": "Submit and execute custom scripts for Illustrator automation. These services support comprehensive scripting capabilities for document manipulation and processing."
         },
         {
-            "name": "Vectorize",
+            "name": "Image Trace",
             "description": "Convert raster artwork to vector format using Illustrator image trace / vectorization. Jobs run asynchronously; poll job status for presigned output URL."
         }
     ],
@@ -1008,10 +1008,10 @@
         "/beta/images/vectorize": {
             "post": {
                 "tags": [
-                    "Vectorize"
+                    "Image Trace"
                 ],
                 "operationId": "submitImageVectorizeJob",
-                "summary": "Submit a Vectorize job",
+                "summary": "Submit an Image Trace job",
                 "description": "Submits a raster-to-vector (Image Trace) job. The request format mirrors other Illustrator async APIs by using `input` and `settings`. Supported inputs are PNG and JPEG. Poll **Retrieve job status** (`GET /v1/status/{jobId}`) using the `jobId` or `statusUrl` from the response. On success, `outputs` contains presigned URLs for generated SVG output.",
                 "x-ffs-async-job": true,
                 "x-ffs-job-status-fetcher": "vectorizeJobStatus",
@@ -1397,11 +1397,11 @@
         "/v1/status/{jobId}": {
             "get": {
                 "tags": [
-                    "Vectorize"
+                    "Image Trace"
                 ],
                 "operationId": "vectorizeJobStatus",
                 "summary": "Retrieve job status",
-                "description": "Poll execution status for a vectorize job. Use this after calling submit vectorize. When the job succeeds, each output item includes a presigned URL and SVG media type.",
+                "description": "Poll execution status for an Image Trace job. Use this after calling Submit an Image Trace job. When the job succeeds, each output item includes a presigned URL and SVG media type.",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "VectorizeAsyncJob",
                 "servers": [
