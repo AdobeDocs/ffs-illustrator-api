@@ -55,12 +55,12 @@
                 ],
                 "requestBody": {
                     "required": true,
-                    "description": "The custom script bundle, in `multipart/form-data`. The ZIP is required and must describe the script to the CXP app engine (see the `file` part schema).",
+                    "description": "The custom script bundle, in `multipart/form-data`.",
                     "content": {
                         "multipart/form-data": {
                             "schema": {
                                 "type": "object",
-                                "description": "The custom script bundle, in ZIP format. This package describes the script to the app engine.",
+                                "description": "The custom script bundle, in ZIP format.",
                                 "required": [
                                     "file"
                                 ],
@@ -110,7 +110,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -136,7 +136,7 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Parameter",
+                        "description": "Bad Request",
                         "headers": {
                             "Content-Type": {
                                 "description": "The type of content returned (e.g., application/json).",
@@ -169,7 +169,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -223,7 +223,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -277,7 +277,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -298,7 +298,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not Found",
+                        "description": "Requested Resource Was Not Found",
                         "headers": {
                             "Content-Type": {
                                 "description": "The type of content returned (e.g., application/json).",
@@ -331,7 +331,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -385,7 +385,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -478,7 +478,7 @@
                 },
                 "responses": {
                     "202": {
-                        "description": "The job has been accepted for processing.",
+                        "description": "Accepted",
                         "headers": {
                             "link": {
                                 "description": "The status URL for a retry.",
@@ -523,7 +523,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -548,7 +548,7 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Parameter",
+                        "description": "Bad Request",
                         "headers": {
                             "Content-Type": {
                                 "description": "The type of content returned (e.g., application/json).",
@@ -581,7 +581,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -635,7 +635,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -689,7 +689,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -710,7 +710,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not Found",
+                        "description": "Requested Resource Was Not Found",
                         "headers": {
                             "Content-Type": {
                                 "description": "The type of content returned (e.g., application/json).",
@@ -743,7 +743,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -797,7 +797,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -856,7 +856,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Success",
                         "headers": {
                             "Content-Type": {
                                 "description": "Media type of the response.",
@@ -872,13 +872,13 @@
                                 }
                             },
                             "x-cxp-version": {
-                                "description": "CXP platform version.",
+                                "description": "Platform version.",
                                 "schema": {
                                     "type": "string"
                                 }
                             },
                             "x-cxp-environment": {
-                                "description": "CXP environment",
+                                "description": "Deployment environment.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -979,7 +979,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not Found",
+                        "description": "Requested Resource Was Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1052,7 +1052,7 @@
                 },
                 "responses": {
                     "202": {
-                        "description": "The job has been accepted for processing.",
+                        "description": "Accepted",
                         "headers": {
                             "link": {
                                 "description": "The status URL for a retry.",
@@ -1097,7 +1097,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -1122,7 +1122,7 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Parameter",
+                        "description": "Bad Request",
                         "headers": {
                             "Content-Type": {
                                 "description": "The type of content returned (e.g., application/json).",
@@ -1155,7 +1155,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -1209,7 +1209,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -1263,7 +1263,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -1284,7 +1284,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not Found",
+                        "description": "Requested Resource Was Not Found",
                         "headers": {
                             "Content-Type": {
                                 "description": "The type of content returned (e.g., application/json).",
@@ -1317,7 +1317,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -1371,7 +1371,7 @@
                                 }
                             },
                             "Access-Control-Allow-Credentials": {
-                                "description": "This header is used by servers to indicate that the client shall share HTTP responses.",
+                                "description": "Indicates whether the browser may send credentials with cross-origin requests.",
                                 "schema": {
                                     "type": "string"
                                 }
@@ -1430,7 +1430,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Success",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1513,7 +1513,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not Found",
+                        "description": "Requested Resource Was Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1604,7 +1604,7 @@
                                 },
                                 "destination": {
                                     "type": "string",
-                                    "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params).\n\nThis provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters.\n\nIt cannot go up using '..' or '/'. or './'. Should be a valid file name."
+                                    "description": "Local filename for the asset in the job workspace (referenced by `targetDocument` and other params). Path relative to the job workspace. Cannot contain `..`, a leading `/`, or `./`. Must be a valid filename."
                                 }
                             },
                             "required": [
@@ -1630,7 +1630,7 @@
                             },
                             "fontFolderPath": {
                                 "type": "string",
-                                "description": "Optional. Relative path to a font folder when required by the script.\n\nThis provides a path relative to a temporary base directory (working directory) where the resource would be downloaded. This would be used to identify the assets within the parameters.\n\nIt cannot go up using '..' or '/'.  or './'. Should be a valid file name. To use this parameter, the `zip` parameter must also be provided."
+                                "description": "Optional. Relative path to a font folder when required by the script. Path relative to the job workspace. Cannot contain `..`, a leading `/`, or `./`. Must be a valid filename. To use this parameter, the `zip` parameter must also be provided."
                             }
                         },
                         "required": [
@@ -1880,7 +1880,7 @@
             },
             "ImageVectorizeRequest": {
                 "type": "object",
-                "description": "Request body for a vectorize job. Input accepts PNG/JPEG and output is SVG when `generateSvg` is true.",
+                "description": "Request body for a vectorize job. Input accepts PNG or JPEG; output is SVG.",
                 "properties": {
                     "input": {
                         "description": "Input raster source and media type.",
