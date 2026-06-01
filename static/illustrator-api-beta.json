@@ -24,11 +24,11 @@
     "tags": [
         {
             "name": "Custom Scripts",
-            "description": "Submit and execute custom scripts for Illustrator automation. These services support comprehensive scripting capabilities for document manipulation and processing."
+            "description": "Submit and execute Custom Scripts for Illustrator automation. These services support comprehensive scripting capabilities for document manipulation and processing."
         },
         {
             "name": "Image Trace",
-            "description": "Convert raster artwork to vector format using Illustrator image trace / vectorization. Jobs run asynchronously; poll job status for presigned output URL."
+            "description": "Convert raster artwork to vector format using Illustrator Image Trace. These jobs run asynchronously."
         }
     ],
     "paths": {
@@ -40,7 +40,7 @@
                 "operationId": "registerCustomScriptCapability",
                 "summary": "Submit a Custom Script",
                 "x-ffs-cxp-ui-group": "customScriptRegisterAndExecute",
-                "description": "Submits custom script bundles for registration. Returns a URL for posting execution requests for the registered script.",
+                "description": "Submits Custom Script bundles for registration. Returns a URL for posting execution requests for the registered script.",
                 "servers": [
                     {
                         "url": "https://illustrator.adobe.io/beta",
@@ -1012,7 +1012,7 @@
                 ],
                 "operationId": "submitImageVectorizeJob",
                 "summary": "Submit an Image Trace job",
-                "description": "Submits a raster-to-vector (Image Trace) job. The request format mirrors other Illustrator async APIs by using `input` and `settings`. Supported inputs are PNG and JPEG. Poll **Retrieve job status** (`GET /v1/status/{jobId}`) using the `jobId` or `statusUrl` from the response. On success, `outputs` contains presigned URLs for generated SVG output.",
+                "description": "Submits a raster-to-vector (Image Trace) job. The request format mirrors other Illustrator async APIs by using `input` and `settings`. Supported inputs are PNG and JPEG. Poll **Retrieve job status** for results using the `jobId` or `statusUrl` from the response. On success, `outputs` contains pre-signed URLs for the generated output.",
                 "x-ffs-async-job": true,
                 "x-ffs-job-status-fetcher": "vectorizeJobStatus",
                 "servers": [
