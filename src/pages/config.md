@@ -22,8 +22,9 @@
         - [Illustrator API - beta services](/api/beta/index.md)
 
 - buttons:
-    - [Support](https://airtable.com/appu5RTWgdM95jynx/pagyuT1qspNJcPU2E/form)
     - [Console](https://developer.adobe.com/console/) consoleId
+    - [Support](https://airtable.com/appu5RTWgdM95jynx/pagyuT1qspNJcPU2E/form) API service support.
+    - [Beta Support](https://airtable.com/appO8JiYWk279LUwc/pag6aTXGt6qWqlvjr/form) Public beta services API support.
 
 - subPages:
     - Getting Started header
