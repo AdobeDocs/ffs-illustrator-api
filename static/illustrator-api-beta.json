@@ -68,7 +68,7 @@
                                     "file": {
                                         "type": "string",
                                         "format": "binary",
-                                        "description": "The custom script bundle, in ZIP format. Required contents: `main.jsx` (ExtendScript with `main()` entry point) and `manifest.json` (capability metadata)."
+                                        "description": "The custom script bundle, in ZIP format. Required contents: `script.jsx` (ExtendScript with `main()` entry point) and `manifest.json` (capability metadata)."
                                     }
                                 }
                             }
