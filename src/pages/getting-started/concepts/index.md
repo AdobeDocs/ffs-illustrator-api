@@ -84,13 +84,13 @@ The structure for a simple custom script bundle would look like this:
 ```text
 custom-script-folder
 |------ manifest.json
-|------ script.js
+|------ script.jsx
 ```
 
 |File|Description|Required|
 |---|---|---|
 |manifest.json|The custom script manifest. All the details of the script are described in this file.|YES|
-|script.js|The primary executable for the script. This script gets executed by the product script engine and, depending on the product script engine support, it can depend on other files in nested directories in the ZIP file.|YES|
+|script.jsx|The primary executable for the script. This script gets executed by the product script engine and, depending on the product script engine support, it can depend on other files in nested directories in the ZIP file.|YES|
 
 ### Custom Script manifest
 
@@ -111,7 +111,7 @@ The manifest file is a plain JSON file with the following structure:
     "apiEntryPoints": [
         {
             "type": "capability",
-            "path": "script.js",
+            "path": "script.jsx",
             "language": "extendscript"
         }
     ]
@@ -184,9 +184,9 @@ In the manifest file, the `apiEntryPoints` attribute is an array of `EntryPointD
 
 There's no need to define an entry point if the default values are being used for them.
 
-### The `script.js` file
+### The `script.jsx` file
 
-The script's author defines the custom attributes and values for a particular endpoint using *script.js* file in the custom script bundle.
+The script's author defines the custom attributes and values for a particular endpoint using *script.jsx* file in the custom script bundle.
 
 The execution of any script depends on the following attributes:
 
