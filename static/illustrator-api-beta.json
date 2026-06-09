@@ -1030,7 +1030,7 @@
                 "parameters": [],
                 "requestBody": {
                     "required": true,
-                    "description": "Vectorize request with `input` and `settings`.",
+                    "description": "Image Trace request with `input` and `settings`.",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -1421,7 +1421,7 @@
                         "name": "jobId",
                         "in": "path",
                         "required": true,
-                        "description": "Job ID returned from submit vectorize.",
+                        "description": "Job ID returned from sn Image Trace job.",
                         "schema": {
                             "type": "string",
                             "example": "ee45451e-3a84-4a81-aa21-7f00aa3302a4"
@@ -1665,16 +1665,16 @@
             },
             "VectorizeSubmitResponse": {
                 "type": "object",
-                "description": "Returned when a vectorize submit request is accepted (HTTP 202).",
+                "description": "Returned when an Image Trace submit request is accepted (HTTP 202).",
                 "properties": {
                     "jobId": {
                         "type": "string",
-                        "description": "Job identifier. Use with **Retrieve job status** on `GET /v1/status/{jobId}` for vectorize jobs.",
+                        "description": "Job identifier. Use with **Retrieve job status** on `GET /v1/status/{jobId}` for Image Trace jobs.",
                         "example": "string"
                     },
                     "statusUrl": {
                         "type": "string",
-                        "description": "URL to poll for vectorize job status (`/v1/status/{jobId}`).",
+                        "description": "URL to poll for Image Trace job status (`/v1/status/{jobId}`).",
                         "example": "string"
                     }
                 },
@@ -1880,7 +1880,7 @@
             },
             "ImageVectorizeRequest": {
                 "type": "object",
-                "description": "Request body for a vectorize job. Input accepts PNG or JPEG; output is SVG.",
+                "description": "Request body for an Image Trace job. Input accepts PNG or JPEG; output is SVG.",
                 "properties": {
                     "input": {
                         "description": "Input raster source and media type.",
