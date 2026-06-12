@@ -185,7 +185,7 @@ The generated output should be exported in `outputFolderPath` via the script. Ex
 <InlineAlert variant="warning" slots="text"/>
 The script **should not** have any `UI` code or invocation of dialogs/popups like `alert()`.
 
-For full API details, see the [Custom Scripts API Reference](https://developer-stage.adobe.com/firefly-services/docs/illustrator/api/#tag/Custom-Scripts).
+For full API details, see the [Custom Scripts API (public beta)](/api/beta/index.md).
 
 ## Providing output from a custom script
 
