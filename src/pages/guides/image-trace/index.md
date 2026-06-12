@@ -112,5 +112,5 @@ Polling uses the Image Trace status operation (`GET https://illustrator-api.adob
 
 ## Related links
 
-- [**Image Trace API (public beta)**](/api/beta/index.md) — OpenAPI reference (`submitImageTraceJob`, `imageTraceJobStatus`).
+- [**Image Trace API (public beta)**](/api/beta/index.md) — OpenAPI reference (`submitImageVectorizeJob`, `vectorizeJobStatus`).
 - [**Custom Script Guide**](/guides/custom-scripts/index.md) — Another beta workflow that also uses async job polling.
