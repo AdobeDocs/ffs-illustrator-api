@@ -55,19 +55,13 @@ These beta services include:
 You find more information about the Custom Scripts (beta) service in the [Custom Scripts API (public beta)](api/beta/index.md) reference.
 You find more information about how to write and execute custom scripts in the [Custom Script Guide](guides/custom-scripts/index.md).
 
-### What's the Illustrator Image Trace (beta) service?
-
-<inlinealert variant="info" slots="heading, text"/>
-
- Public beta
-
-The Image Trace service is in public beta. It is available to all users, but APIs in this section are subject to change.
+### What's the Illustrator Image Trace service?
 
 The Image Trace workflow lets you submit raster images (PNG or JPEG) and retrieve **SVG** output only (`image/svg+xml`). You provide presigned URLs for inputs, poll `GET https://illustrator-api.adobe.io/v1/status/{jobId}`, and download the SVG from the presigned URL when the job completes. Other output formats are not returned.
 
-- [Submit a Image Trace job](api/beta/index.md#operation/submitImageVectorizeJob)
+- [Vectorize (Image Trace)](api/index.md#operation/vectorize)
 
-Read the [Image Trace API (public beta)](api/beta/index.md) reference for request and response shapes, and the [Image Trace guide](guides/image-trace/index.md) for the end-to-end workflow.
+Read the [Illustrator API reference](api/index.md) for request and response shapes, and the [Image Trace guide](guides/image-trace/index.md) for the end-to-end workflow.
 
 ## Discover
 
@@ -87,11 +81,11 @@ Try the API with Swagger UI. Explore, make calls, with full endpoint description
 
 <DiscoverBlock slots="heading, link, text"/>
 
-### Custom Scripts and Image Trace API (public beta)
+### Custom Scripts API (public beta)
 
 [**Try the Illustrator public beta API**](api/beta/index.md)
 
-Explore the public beta reference for Custom Scripts and Image Trace.
+Explore the public beta reference for Custom Scripts.
 
 <Resources slots="heading, links"/>
 

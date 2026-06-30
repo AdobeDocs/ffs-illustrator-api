@@ -34,7 +34,7 @@ If you are new to pre-signed URLs and job polling, read [Key concepts](/getting-
 ## Workflow
 
 1. **Upload** your raster file to your storage and obtain a **presigned GET URL** (or equivalent temporary download URL supported by the platform).
-2. **Submit** `POST https://illustrator-api.adobe.io/beta/images/vectorize` with `input` (source URL + `mediaType`) and, if needed, optional `settings.preset`. See the [Image Trace API (public beta)](/api/beta/index.md) reference for the request schema.
+2. **Submit** `POST https://illustrator-api.adobe.io/v1/trace-image` with `input` (source URL + `mediaType`) and, if needed, optional `settings.preset`. See the [Illustrator API reference](/api/index.md) for the request schema.
 3. **Poll** `GET https://illustrator-api.adobe.io/v1/status/{jobId}` using the `jobId` or `statusUrl` from the submit response until `status` is `succeeded` or `failed`.
 4. **Download** SVG output from the presigned URLs in the `outputs` array when the job succeeds.
 
@@ -71,7 +71,7 @@ Use the following request shape:
 
 ## Status and outputs
 
-Polling uses the Image Trace status operation (`GET https://illustrator-api.adobe.io/v1/status/{jobId}`). When `status` is `succeeded`, use the presigned URLs in `outputs` to download generated SVG files. Error messages and HTTP status codes follow the same error schema as other beta operations in this reference.
+Polling uses the shared job status operation (`GET https://illustrator-api.adobe.io/v1/status/{jobId}`). When `status` is `succeeded`, use the presigned URLs in `outputs` to download generated SVG files. Error messages and HTTP status codes follow the same error schema as other Illustrator API operations.
 
 ### Submit response (202 Accepted)
 
@@ -112,5 +112,5 @@ Polling uses the Image Trace status operation (`GET https://illustrator-api.adob
 
 ## Related links
 
-- [**Image Trace API (public beta)**](/api/beta/index.md) — OpenAPI reference (`submitImageVectorizeJob`, `vectorizeJobStatus`).
+- [**Illustrator API reference**](/api/index.md) — OpenAPI reference (`vectorize`, `facadeJobStatus`).
 - [**Custom Script Guide**](/guides/custom-scripts/index.md) — Another beta workflow that also uses async job polling.
