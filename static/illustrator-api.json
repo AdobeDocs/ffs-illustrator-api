@@ -836,6 +836,7 @@
                     "Image Trace"
                 ],
                 "operationId": "vectorize",
+                "summary": "Image Trace",
                 "description": "This endpoint allows you to convert a raster image (JPEG/PNG) into vector format (SVG). The request is processed asynchronously and the status of the job can be checked using the status URL provided in the response.",
                 "x-ffs-async-job": true,
                 "x-ffs-job-status-fetcher": "imageTraceJobStatus",
