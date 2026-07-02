@@ -59,7 +59,7 @@ You find more information about how to write and execute custom scripts in the [
 
 The Image Trace workflow lets you submit raster images (PNG or JPEG) and retrieve **SVG** output only (`image/svg+xml`). You provide presigned URLs for inputs, poll `GET https://illustrator-api.adobe.io/v1/status/{jobId}`, and download the SVG from the presigned URL when the job completes. Other output formats are not returned.
 
-- [Image Trace](api/index.md#operation/vectorize)
+- [Image Trace](api/index.md#operation/traceImage)
 
 Read the [Illustrator API reference](api/index.md) for request and response shapes, and the [Image Trace guide](guides/image-trace/index.md) for the end-to-end workflow.
 
