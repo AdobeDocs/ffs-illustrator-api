@@ -836,10 +836,10 @@
                     "Image Trace"
                 ],
                 "operationId": "vectorize",
-                "summary": "Vectorize",
+                "summary": "Image Trace",
                 "description": "This endpoint allows you to convert a raster image (JPEG/PNG) into vector format (SVG). The request is processed asynchronously and the status of the job can be checked using the status URL provided in the response.",
                 "x-ffs-async-job": true,
-                "x-ffs-job-status-fetcher": "facadeJobStatus",
+                "x-ffs-job-status-fetcher": "imageTraceJobStatus",
                 "parameters": [],
                 "requestBody": {
                     "required": true,
@@ -910,15 +910,134 @@
                 }
             }
         },
+        "/v1/status/{jobId}/image-trace": {
+            "get": {
+                "tags": [
+                    "Image Trace"
+                ],
+                "operationId": "imageTraceJobStatus",
+                "summary": "Retrieve job status",
+                "description": "Poll execution status for an Image Trace job. Use this after calling Image Trace. Poll `GET /v1/status/{jobId}` with the job ID from the trace-image response. When the job succeeds, each output item includes a presigned URL and SVG media type (`image/svg+xml`). Image Trace jobs return only `running`, `succeeded`, or `failed`.",
+                "x-ffs-status-fetcher": true,
+                "x-ffs-job-name": "VectorizeAsyncJob",
+                "parameters": [
+                    {
+                        "name": "jobId",
+                        "required": true,
+                        "in": "path",
+                        "description": "Job ID returned from an Image Trace job.",
+                        "schema": {
+                            "type": "string",
+                            "example": "f7da0875-7919-486d-b915-7258c89f09e0"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ImageTraceJobApiResponse"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/JobStatusPollPayload"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/ImageTraceJobFailedResponse"
+                                        }
+                                    ]
+                                },
+                                "examples": {
+                                    "succeeded_image_trace": {
+                                        "summary": "Status: Succeeded",
+                                        "value": {
+                                            "jobId": "f7da0875-7919-486d-b915-7258c89f09e0",
+                                            "status": "succeeded",
+                                            "outputs": [
+                                                {
+                                                    "destination": {
+                                                        "url": "https://example.com/output.svg"
+                                                    },
+                                                    "mediaType": "image/svg+xml"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "running": {
+                                        "summary": "Status: Running",
+                                        "value": {
+                                            "jobId": "48db6300-1cc5-4a31-84f6-5092fbd67484",
+                                            "status": "running",
+                                            "Retry-After": "1"
+                                        }
+                                    },
+                                    "failed": {
+                                        "summary": "Status: Failed",
+                                        "value": {
+                                            "jobId": "fe0f4a1a-a213-44bd-b37b-8aa2f636449c",
+                                            "status": "failed",
+                                            "error_code": "runtime_error",
+                                            "message": "An unexpected error occurred while processing your request."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LongJobError"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LongJobError"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JobError"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JobError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/status/{jobId}": {
             "get": {
                 "tags": [
-                    "Data Merge & Create Rendition",
-                    "Image Trace"
+                    "Data Merge & Create Rendition"
                 ],
                 "operationId": "facadeJobStatus",
                 "summary": "Retrieve job status",
-                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). No other job types return the `partially_succeeded` status.<br>When `status` is `succeeded`, for Data Merge jobs each item in `outputs` includes a `row` field; for Create Rendition jobs, output items contain `destination` and `mediaType` only; for Image Trace jobs, output items contain `destination` and `mediaType` (`image/svg+xml`).",
+                "description": "Retrieve the status of a job by providing the job ID. The job ID can be obtained from the response of other APIs. For all asynchronous jobs, polling this endpoint can return `running`, `succeeded`, or `failed`. The `partially_succeeded` status is returned only for Data Merge jobs when some CSV rows produce outputs while other rows fail or must be rerun after errors (for example, missing fonts). No other job types return the `partially_succeeded` status.<br>When `status` is `succeeded`, for Data Merge jobs each item in `outputs` includes a `row` field; for Create Rendition jobs, output items contain `destination` and `mediaType` only.",
                 "x-ffs-status-fetcher": true,
                 "x-ffs-job-name": "FacadeAsyncJob",
                 "parameters": [
@@ -2232,6 +2351,96 @@
                         "example": "enhanced_general"
                     }
                 }
+            },
+            "ImageTraceOutput": {
+                "type": "object",
+                "properties": {
+                    "destination": {
+                        "description": "Details of the location where the output is located.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/CreateRenditionOutputDestination"
+                            }
+                        ]
+                    },
+                    "mediaType": {
+                        "type": "string",
+                        "enum": [
+                            "image/svg+xml"
+                        ],
+                        "description": "Media type of the generated output."
+                    }
+                },
+                "required": [
+                    "destination",
+                    "mediaType"
+                ],
+                "additionalProperties": false
+            },
+            "ImageTraceJobApiResponse": {
+                "type": "object",
+                "title": "Succeeded (Image Trace)",
+                "description": "Returned when an Image Trace job completes successfully.",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "The job status.",
+                        "enum": [
+                            "succeeded"
+                        ]
+                    },
+                    "jobId": {
+                        "type": "string",
+                        "description": "The job ID.",
+                        "example": "f7da0875-7919-486d-b915-7258c89f09e0"
+                    },
+                    "outputs": {
+                        "type": "array",
+                        "description": "Array of generated SVG output files.",
+                        "items": {
+                            "$ref": "#/components/schemas/ImageTraceOutput"
+                        }
+                    }
+                },
+                "required": [
+                    "status",
+                    "jobId",
+                    "outputs"
+                ]
+            },
+            "ImageTraceJobFailedResponse": {
+                "type": "object",
+                "title": "Failed",
+                "properties": {
+                    "jobId": {
+                        "type": "string",
+                        "description": "The job ID.",
+                        "example": "fe0f4a1a-a213-44bd-b37b-8aa2f636449c"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "failed"
+                        ],
+                        "description": "The job status."
+                    },
+                    "error_code": {
+                        "type": "string",
+                        "description": "The error code.",
+                        "example": "runtime_error"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "The error message.",
+                        "example": "An unexpected error occurred while processing your request."
+                    }
+                },
+                "required": [
+                    "jobId",
+                    "status",
+                    "error_code",
+                    "message"
+                ]
             }
         }
     }
