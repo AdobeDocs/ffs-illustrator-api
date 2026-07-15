@@ -25,7 +25,7 @@ Learn how to package and run custom script bundles with the Custom Scripts API: 
 
 ### [Image Trace guide](image-trace/index.md)
 
-Run raster-to-vector (Image Trace) jobs: `input` (`source.url` + `mediaType`), optional `settings.preset`, polling `GET https://illustrator-api.adobe.io/v1/status/{jobId}`, and downloading SVG output. Pair with the [public beta API reference](../api/beta/index.md).
+Run raster-to-vector (Image Trace) jobs: `input` (`source.url` + `mediaType`), optional `settings.preset`, polling `GET https://illustrator-api.adobe.io/v1/status/{jobId}`, and downloading SVG output. Pair with the [Illustrator API reference](../api/index.md).
 ### [Template setup for Data Merge](template-setup/index.md)
 
 Prepare `.ai` templates and CSV data for the **Data merge** workflow: variables, data sets, and HelpX links for desktop steps. Pair this guide with the [Illustrator API](../api/index.md) reference and [Technical usage notes — Data Merge](../getting-started/usage/index.md).
