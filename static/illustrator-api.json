@@ -462,6 +462,14 @@
                                     },
                                     "mediaType": "application/illustrator"
                                 },
+                                "fontFiles": [
+                                    {
+                                        "source": {
+                                            "url": "https://your-bucket.s3.amazonaws.com/your-font.ttf"
+                                        },
+                                        "mediaType": "font/ttf"
+                                    }
+                                ],
                                 "output": {
                                     "mediaType": "application/pdf"
                                 },
@@ -2174,6 +2182,13 @@
                                 "$ref": "#/components/schemas/CreateRenditionInput"
                             }
                         ]
+                    },
+                    "fontFiles": {
+                        "description": "Optional array of font files to be used in the rendition. Supports .ttf and .otf font formats.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DataMergeFontFile"
+                        }
                     },
                     "output": {
                         "description": "Output specification for the rendition operation with desired media type.",
