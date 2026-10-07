@@ -2162,7 +2162,7 @@
                     },
                     "resolution": {
                         "type": "number",
-                        "description": "Resolution in DPI (dots per inch) for the output. Must be an integer between 4 and 2400 for PNG, JPEG and WEBP formats. Defaults to 72. Not applicable for other formats (PDF, EPS, SVG, or WEBP).",
+                        "description": "Resolution in DPI (dots per inch) for the output. Must be an integer between 4 and 2400 for PNG, JPEG and WEBP formats. Defaults to 72. Not applicable for other formats (PDF, EPS or SVG).",
                         "minimum": 4,
                         "maximum": 2400,
                         "default": 72
