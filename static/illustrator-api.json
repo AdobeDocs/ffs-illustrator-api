@@ -2097,6 +2097,47 @@
                     "application/illustrator"
                 ]
             },
+            "CreateRenditionFontSourceUrl": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "description": "The URL pointing to the resource. Only the following allow-listed domains can be used: amazonaws.com, windows.net, dropboxusercontent.com, assets.frame.io, storage.googleapis.com.",
+                        "example": "https://your-bucket.s3.amazonaws.com/your-font.ttf"
+                    }
+                },
+                "required": [
+                    "url"
+                ]
+            },
+            "CreateRenditionFontFileMediaType": {
+                "type": "string",
+                "description": "The media type of the font file. Supports font/ttf and font/otf.",
+                "enum": [
+                    "font/ttf",
+                    "font/otf"
+                ]
+            },
+            "CreateRenditionFontFile": {
+                "type": "object",
+                "properties": {
+                    "source": {
+                        "description": "The source containing the font file.",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/CreateRenditionFontSourceUrl"
+                            }
+                        ]
+                    },
+                    "mediaType": {
+                        "$ref": "#/components/schemas/CreateRenditionFontFileMediaType"
+                    }
+                },
+                "required": [
+                    "source",
+                    "mediaType"
+                ]
+            },
             "CreateRenditionInput": {
                 "type": "object",
                 "properties": {
@@ -2187,7 +2228,7 @@
                         "description": "Optional array of font files to be used in the rendition. Supports .ttf and .otf font formats.",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/DataMergeFontFile"
+                            "$ref": "#/components/schemas/CreateRenditionFontFile"
                         }
                     },
                     "output": {
