@@ -21,7 +21,7 @@ Use these guides when you need step-by-step detail beyond the [API reference](..
 
 ### [Custom Script Guide](custom-scripts/index.md)
 
-Learn how to package and run custom script bundles with the Custom Scripts API: ZIP layout, `manifest.json`, `script.jsx` entry points, and how capability names map to execution URLs. Pair this guide with the [Custom Scripts API (public beta)](../api/beta/index.md) reference for request and response shapes.
+Learn how to package and run custom script bundles with the Custom Scripts API: ZIP layout, `manifest.json`, `script.jsx` entry points, and how capability names map to execution URLs. Pair this guide with the [Illustrator API reference](../api/index.md) reference for request and response shapes.
 
 ### [Image Trace guide](image-trace/index.md)
 

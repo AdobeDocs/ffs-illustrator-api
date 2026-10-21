@@ -19,12 +19,10 @@
     - [Guides](/guides/index.md)
     - API Reference
         - [Illustrator API](/api/index.md)
-        - [Illustrator API - beta services](/api/beta/index.md)
 
 - buttons:
     - [Console](https://developer.adobe.com/console/) consoleId
     - [Support](https://airtable.com/appu5RTWgdM95jynx/pagyuT1qspNJcPU2E/form) API service support.
-    - [Beta Support](https://airtable.com/appO8JiYWk279LUwc/pag6aTXGt6qWqlvjr/form) Public beta services API support.
 
 - subPages:
     - Getting Started header
@@ -32,6 +30,6 @@
     - [Key concepts](/getting-started/concepts/index.md)
     - [Technical usage notes](/getting-started/usage/index.md)
     - Guides header
-    - [Using Custom Scripts (beta)](/guides/custom-scripts/index.md)
+    - [Using Custom Scripts](/guides/custom-scripts/index.md)
     - [Image Trace](/guides/image-trace/index.md)
     - [Template setup for Data Merge](/guides/template-setup/index.md)
