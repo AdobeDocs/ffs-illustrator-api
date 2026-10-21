@@ -6,6 +6,7 @@ keywords:
   - firefly
   - illustrator
   - data merge
+  - custom scripts
   - status
 --- 
 <RedoclyAPIBlock src="/firefly-services/docs/illustrator/illustrator-api.json" hideTryItPanel scrollYOffset={64} generateCodeSamples="languages: [{lang: 'curl'}]" />

@@ -37,22 +37,16 @@ Merge an Illustrator document with a data source file. Create one design, and th
 
 The Rendition service allows you to convert Adobe Illustrator files into various output formats. It supports conversion of .ai documents into multiple web- and print-ready formats. The output is provided as a single converted file.
 
-### What's the Illustrator Custom Scripts (beta) service?
+### What's the Illustrator Custom Scripts service?
 
-<inlinealert variant="info" slots="heading, text"/>
+The Custom Scripts service allows you to execute custom scripts for Adobe Illustrator. It supports comprehensive scripting capabilities for document manipulation and processing.
 
- Public beta
+These services include:
 
-The Custom Scripts services are in public beta. They are available to all users but APIs in this section are subject to change.
+- [Submit a custom script](api/index.md#operation/registerCustomScriptCapability)
+- [Execute a custom script](api/index.md#operation/executeCustomScriptCapability)
 
-The Custom Scripts (beta) service allows you to execute custom scripts for Adobe Illustrator. It supports comprehensive scripting capabilities for document manipulation and processing.
-
-These beta services include:
-
-- [Submit a custom script](api/beta/index.md#operation/registerCustomScriptCapability)
-- [Execute a custom script](api/beta/index.md#operation/executeCustomScriptCapability)
-
-You find more information about the Custom Scripts (beta) service in the [Custom Scripts API (public beta)](api/beta/index.md) reference.
+You find more information about the Custom Scripts service in the [Illustrator API](api/index.md) reference.
 You find more information about how to write and execute custom scripts in the [Custom Script Guide](guides/custom-scripts/index.md).
 
 ### What's the Illustrator Image Trace service?
@@ -78,14 +72,6 @@ Get started with authentication and other prerequisites.
 [**Try the API**](api/index.md)
 
 Try the API with Swagger UI. Explore, make calls, with full endpoint descriptions.
-
-<DiscoverBlock slots="heading, link, text"/>
-
-### Custom Scripts API (public beta)
-
-[**Try the Illustrator public beta API**](api/beta/index.md)
-
-Explore the public beta reference for Custom Scripts.
 
 <Resources slots="heading, links"/>
 

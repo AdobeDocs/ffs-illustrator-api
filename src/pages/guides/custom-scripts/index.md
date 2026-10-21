@@ -185,7 +185,7 @@ The generated output should be exported in `outputFolderPath` via the script. Ex
 <InlineAlert variant="warning" slots="text"/>
 The script **should not** have any `UI` code or invocation of dialogs/popups like `alert()`.
 
-For full API details, see the [Custom Scripts API (public beta)](/api/beta/index.md).
+For full API details, see the [Illustrator API reference](/api/index.md#operation/registerCustomScriptCapability).
 
 ## Providing output from a custom script
 
