@@ -113,4 +113,4 @@ Polling uses the shared job status operation (`GET https://illustrator-api.adobe
 ## Related links
 
 - [**Illustrator API reference**](/api/index.md) — OpenAPI reference (`traceImage`, `imageTraceJobStatus`).
-- [**Custom Script Guide**](/guides/custom-scripts/index.md) — Another beta workflow that also uses async job polling.
+- [**Custom Script Guide**](/guides/custom-scripts/index.md) — Another workflow that also uses async job polling.
